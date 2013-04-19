@@ -11,7 +11,11 @@ public class Information {
 		this.color = null;
 	}
 	
-	void setInfoColor( String color) {
+	public void setInfoColor( String color) {
 		this.color = color;
+	}
+	
+	public String getInfoCoor(){
+		return this.color;
 	}
 }

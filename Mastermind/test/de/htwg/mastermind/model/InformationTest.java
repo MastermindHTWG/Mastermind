@@ -17,8 +17,9 @@ public class InformationTest {
 	}
 
 	@Test
-	public void test() {
-		
+	public void setGetInfoColortest() {
+		one.setInfoColor("blue");
+		assertEquals("blue", one.getInfoCoor());
 	}
 
 }

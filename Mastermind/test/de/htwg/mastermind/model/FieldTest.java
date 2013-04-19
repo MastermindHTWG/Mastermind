@@ -10,6 +10,7 @@ import de.htwg.mastermind.model.Field;
 public class FieldTest {
 
 	Field one;
+	Field two;
 	
 	@Before
 	public void setUp() {
@@ -17,6 +18,9 @@ public class FieldTest {
 		one.rec[0].setSquare(0, "blue");
 		one.rec[1].setSquare(0, "blue");
 		one.rec[2].setSquare(0,"red");
+		
+		
+		two = new Field(2,2);
 	}
 
 	@Test
