@@ -36,10 +36,12 @@ public class Field {
 		StringBuilder sb = new StringBuilder();
 		String newLine = System.getProperty("line.separator");
 		
+		/*Solution*/
 		sb.append(this.rec[1]).append(newLine);
 		for(int i = size-1; i >= 0; i--)  {
 			sb.append(this.game[i].toString()).append(aktiv[i]).append(newLine);;
 		}
+		/*ColorSelection*/
 		sb.append(this.rec[0]);
 		
 		return sb.toString();

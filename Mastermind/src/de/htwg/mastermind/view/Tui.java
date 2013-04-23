@@ -10,9 +10,9 @@ public class Tui {
 	public Tui(MastermindController controller) {
 		this.controller = controller;
 	}
-	
+	/*fehler*/
 	public void showTUI() {
-		controller.toString(); //fehler
+		controller.toString(); 
 	}
 
 }

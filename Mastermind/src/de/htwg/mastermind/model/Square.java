@@ -2,6 +2,7 @@ package de.htwg.mastermind.model;
 
 public class Square {
 
+	private static int HASH = 31;
 	private String color;
 	
 	
@@ -18,10 +19,8 @@ public class Square {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Square) {
-			if (this.color.equals(((Square) obj).getColor())) {
-				return true;
-			}
+		if (obj instanceof Square && this.color.equals(((Square) obj).getColor())) {
+			return true;
 		} 
 			return false;
 	}	
@@ -29,7 +28,7 @@ public class Square {
 	public int hashCode() {
 		int adr = 0;
 		for(int i = 0 ; i< this.color.length(); i++) {
-			adr = adr*31 + this.color.charAt(i);
+			adr = adr*HASH + this.color.charAt(i);
 		}
 		return adr;
 	}

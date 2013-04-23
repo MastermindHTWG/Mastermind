@@ -9,7 +9,11 @@ public class MastermindController {
 	
 	public MastermindController(Field gamefield) {
 		this.gamefield = gamefield;
-		gamefield.toString(); //fehler
+		
+	}
+	
+	public void set() {
+		gamefield.toString(); /*fehler*/
 	}
 
 }

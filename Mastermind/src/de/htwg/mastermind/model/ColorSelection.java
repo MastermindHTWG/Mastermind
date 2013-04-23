@@ -1,9 +1,13 @@
 package de.htwg.mastermind.model;
 
+
+
 public class ColorSelection extends Rectangle{
 
+	private static final int COLORSIZE = 6;
+	
 	ColorSelection() {
-		super(6);
+		super(COLORSIZE);
 		setSolutionColor();
 	}
 	

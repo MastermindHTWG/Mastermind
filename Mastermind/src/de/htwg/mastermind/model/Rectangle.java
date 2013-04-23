@@ -6,7 +6,7 @@ package de.htwg.mastermind.model;
 public class Rectangle {
 
 	private int size;
-	Square [] unit;
+	protected Square [] unit;
 	
 	public Rectangle(int size) {
 		
@@ -17,11 +17,12 @@ public class Rectangle {
 		}
 	}
 	
-	public void setColor(int pos, String color) throws  IllegalArgumentException {
-		if (pos >= size) {
+	public void setColor(int pos, String color) {
+	/*throws  IllegalArgumentException*/ 
+		/*if (pos >= size) {
 			throw new  IllegalArgumentException("pos is not in range of size");
-		}
-		unit[pos].setColor(color); //TODO anpassen circle kann anwender setzen
+		}*/
+		unit[pos].setColor(color); 
 	}
 	
 	public String[] getSquareColor(){
