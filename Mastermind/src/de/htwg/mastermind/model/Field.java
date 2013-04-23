@@ -2,10 +2,10 @@ package de.htwg.mastermind.model;
 
 public class Field {
 
-	Rectangle [] rec = {new ColorSelection(), new Solution(1)} ;
-	GameRectangle [] game;
+	private Rectangle [] rec = {new ColorSelection(), new Solution(1)} ;
+	private GameRectangle [] game;
 	private int size = 1;
-	boolean [] aktiv;
+	private boolean [] aktiv;
 	
 	
 	public Field(){

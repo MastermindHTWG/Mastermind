@@ -3,8 +3,8 @@ package de.htwg.mastermind.model;
 public class GameRectangle {
 
 
-	PlayerSetColor psc;
-	Information info;
+	private PlayerSetColor psc;
+	private Information info;
 	 
 	
 	public GameRectangle(int size) {

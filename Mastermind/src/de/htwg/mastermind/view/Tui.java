@@ -12,7 +12,7 @@ public class Tui {
 	}
 	
 	public void showTUI() {
-		System.out.println();
+		controller.toString(); //fehler
 	}
 
 }

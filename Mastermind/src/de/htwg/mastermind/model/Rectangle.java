@@ -5,8 +5,9 @@ package de.htwg.mastermind.model;
 
 public class Rectangle {
 
-	int size;
+	private int size;
 	Square [] unit;
+	
 	public Rectangle(int size) {
 		
 		this.size = size;
