@@ -1,22 +1,27 @@
 package de.htwg.mastermind.model;
 
-public class GameRectangle extends Rectangle {
+public class GameRectangle {
 
 
-	Information [] info;
-	//Check 
+	PlayerSetColor psc;
+	Information info;
+	 
 	
-	GameRectangle(int size) {
-		super(size);
-		info = new Information[size];
+	public GameRectangle(int size) {
+		
+		psc = new PlayerSetColor(size);
+		info = new Information(size);
 	}
 	
-	/*
-	 * @param pos : Integer ob richtige Farbe gewaehlt wurde
-	 * @param color : String schwarz oder weiﬂ
-	 * wird von algorithmus gesetzt
-	 */
-//	void setInformation(int pos, String color) {
-//		info[pos].setInfoColor(color);
-//	}
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		String newLine = System.getProperty("line.separator");
+		
+		
+		sb.append(info.row()).append(psc.row()).append(newLine);
+		sb.append(info.column()).append(psc.column()).append(newLine);
+		sb.append(info.row()).append(psc.row());
+		return sb.toString();
+	}
 }

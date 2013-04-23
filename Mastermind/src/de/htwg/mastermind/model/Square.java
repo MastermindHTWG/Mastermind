@@ -5,8 +5,8 @@ public class Square {
 	private String color;
 	
 	
-	Square() {
-		this.color = "brown"; // object zu viel
+	public Square() {
+		this.color = "_"; 
 	}
 	
 	void setColor(String color) {
@@ -32,5 +32,16 @@ public class Square {
 			adr = adr*31 + this.color.charAt(i);
 		}
 		return adr;
+	}
+	
+	/*
+	 * retruns a String of the form (color)
+	 */
+	
+	@Override
+	public String toString() {		
+		StringBuilder sb = new StringBuilder();
+		return sb.append("(").append(color).append(")").toString();
+		
 	}
 }

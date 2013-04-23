@@ -13,13 +13,13 @@ public class InformationTest {
 	
 	@Before
 	public void setUp() {
-		one = new Information();	
+		one = new Information(1);	
 	}
 
 	@Test
 	public void setGetInfoColortest() {
-		one.setInfoColor("blue");
-		assertEquals("blue", one.getInfoCoor());
+		one.setColor(0,"blue");
+		assertArrayEquals(new String[] {"blue"},one.getSquareColor());
 	}
 
 }

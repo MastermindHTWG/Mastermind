@@ -19,7 +19,7 @@ public class ColorSelectionTest {
 	@Test
 	public void test() {
 		one.setColor();
-		assertArrayEquals( new String[] {"red","blue","black", "white","green", "yellow", "orange", "purple"},one.getSquareColor());
+		assertArrayEquals( new String[] {"R","B","O", "W","G", "Y"},one.getSquareColor());
 
 	}
 

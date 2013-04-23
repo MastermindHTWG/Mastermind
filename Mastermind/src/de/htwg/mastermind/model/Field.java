@@ -2,23 +2,47 @@ package de.htwg.mastermind.model;
 
 public class Field {
 
-	Rectangle [] rec;
+	Rectangle [] rec = {new ColorSelection(), new Solution(1)} ;
+	GameRectangle [] game;
+	private int size = 1;
+	boolean [] aktiv;
+	
 	
 	public Field(){
-		rec = new Rectangle[3];
-		rec[0] =  new ColorSelection();
-		rec[1] = new Rectangle(1);
-		rec[2] = new Solution(1);
+		this.aktiv = new boolean[1];
+		aktiv[0] = true;
+		this.game = new GameRectangle[size];
+		this.game[0] = new GameRectangle(size);
+	
 		
 	}
-	public Field(int size, int length) {
-	
-		rec = new Rectangle[length+2];
-		rec[0] = new ColorSelection();
-		for (int i = 1 ; i <=length; i++) {
-			rec[i] = new Rectangle(size);
+	public Field(int size) {
+		this.size = size;
+		this.game = new GameRectangle[size];
+		this.aktiv = new boolean[size];
+		this.aktiv[0] = true;
+		for (int i = 0 ; i <size; i++) {
+			this.game[i] = new GameRectangle(size);
 		}
-		rec[length+1] = new Solution(size);
+	}
+	/*TODO logik controller*/
+	public void setAktiv(int position) {
+			aktiv[position-1] = true;
+			aktiv[position-2] = false;	
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		String newLine = System.getProperty("line.separator");
+		
+		sb.append(this.rec[1]).append(newLine);
+		for(int i = size-1; i >= 0; i--)  {
+			sb.append(this.game[i].toString()).append(aktiv[i]).append(newLine);;
+		}
+		sb.append(this.rec[0]);
+		
+		return sb.toString();
 	}
 	
 }

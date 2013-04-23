@@ -3,7 +3,7 @@ package de.htwg.mastermind.model;
 public class ColorSelection extends Rectangle{
 
 	ColorSelection() {
-		super(8);
+		super(6);
 		setColor();
 	}
 	
@@ -11,14 +11,18 @@ public class ColorSelection extends Rectangle{
 	 * Setzt farben für die Farbauswahl
 	 */
 	public void setColor() {
-		unit[0].setColor("red");
-		unit[1].setColor("blue");
-		unit[2].setColor("black");
-		unit[3].setColor("white");
-		unit[4].setColor("green");
-		unit[5].setColor("yellow");
-		unit[6].setColor("orange");
-		unit[7].setColor("purple");		
+		unit[0].setColor("R");
+		unit[1].setColor("B");
+		unit[2].setColor("O");
+		unit[3].setColor("W");
+		unit[4].setColor("G");
+		unit[5].setColor("Y");
+
 	}
+	
+//	@Override
+//	public String toString() {
+//		System.out.println(Geben Sie die Position);
+//	}
 
 }
