@@ -10,22 +10,19 @@ import de.htwg.mastermind.model.GameRectangle;
 public class GameRectangleTest {
 
 	GameRectangle one;
+	GameRectangle two;
+	StringBuilder sb;
+	@Before
+	public void setUp() {
+		one = new GameRectangle(1);
+		two = new GameRectangle(1);
+	}
 	
-//	@Before
-//	public void setUp() {
-//		one = new GameRectangle(1);
-//		one.setColor(0, "red");
-//	}
-//
-//	@Test
-//	public void test() {
-//		
-//		assertArrayEquals(new String[] {"red"},one.getSquareColor());
-//	}
-	
-//	@Test(expected = IllegalArgumentException.class)
-//	public void testException() {
-//		one.setColor(10, "blue");
-//	}
+
+
+	@Test
+	public void toStringTest() {
+		assertEquals( one.toString(), two.toString());
+	}
 
 }

@@ -25,11 +25,8 @@ public class Field {
 			this.game[i] = new GameRectangle(size);
 		}
 	}
-	/*TODO logik controller*/
-	public void setAktiv(int position) {
-			aktiv[position-1] = true;
-			aktiv[position-2] = false;	
-	}
+	/*TODO logik controller aktiv*/
+
 	
 	@Override
 	public String toString() {

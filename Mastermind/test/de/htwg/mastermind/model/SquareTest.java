@@ -12,11 +12,13 @@ public class SquareTest {
 
 	Square one;
 	Square two;
+	Square toString;
 	
 	@Before
 	public void setUp() {
 		one = new Square();
 		two = new Square();
+		toString = new Square();
 	}
 	
 	@Test
@@ -43,5 +45,13 @@ public class SquareTest {
 		one.setColor("red");
 		two.setColor("blue");
 		assertFalse(one.equals(two));
+	}
+	
+	@Test
+	public void toStringTest() {
+		toString.setColor("B");
+		assertEquals(toString.toString(),"(B)");
+		
+		
 	}
 }

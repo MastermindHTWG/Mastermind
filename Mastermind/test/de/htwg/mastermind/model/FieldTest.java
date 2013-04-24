@@ -11,35 +11,24 @@ public class FieldTest {
 
 	Field one;
 	Field two;
+	Field three;
+	Field four;
 	
-//	@Before
-//	public void setUp() {
-//		one = new Field();
-//		one.rec[0].setColor(0, "blue");
-//		one.rec[1].setColor(0, "blue");
-//		one.rec[2].setColor(0,"red");
-//		
-//		
-//		two = new Field(2);
-//	}
-//
-//	@Test
-//	public void colorSelectionTest() {
-//		String [] tmp = one.rec[0].getSquareColor();
-//		assertEquals("blue",tmp[0]);
-//		
-//	}
-//	@Test
-//	public void GameRectangleTest() {
-//		String [] tmp = one.rec[1].getSquareColor();
-//		assertEquals("blue",tmp[0]);
-//		
-//	}
-//	@Test
-//	public void SolutionTest() {
-//		String [] tmp = one.rec[2].getSquareColor();
-//		assertEquals("red",tmp[0]);
-//		
-//	}
+	@Before
+	public void setUp() {
+		one = new Field();
+		two = new Field();
+		three = new Field(1);
+		four  = new Field(1);
+	}
+
+	@Test
+	public void toStringTest() {
+		assertEquals(one.toString(), two.toString());
+	}
+	@Test
+	public void fieldTest(){
+		assertEquals(three.toString(), four.toString());
+	}
 	
 }
