@@ -14,5 +14,13 @@ public class Tui {
 	public void showTUI() {
 		controller.toString(); 
 	}
+	
+	public static boolean input(String next) {
+
+		if (next.equals("-")) {
+			return false;
+		}
+		return true;
+	}
 
 }

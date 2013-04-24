@@ -12,17 +12,17 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		/*Scanner scanner;*/
+		Scanner scanner;
 		/*model*/
-		//Field gamefield = new Field(1);
+		Field gamefield = new Field(1);
 		
-		//System.out.println(gamefield);
+		
 
 		/*controller*/
-		/*MastermindController controller = new MastermindController(gamefield);*/
+		MastermindController controller = new MastermindController(gamefield);
 				
 		/*view*/
-		/*Tui tui = new Tui(controller);
+		Tui tui = new Tui(controller);
 		
 		scanner = new Scanner(System.in);
 		
@@ -31,9 +31,9 @@ public class Main {
 		
 		boolean continu = true;
 		while(continu) {
-			
+			continu = Tui.input(scanner.next());
 		}
-		*/
+		
 		
 
 	}

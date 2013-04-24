@@ -18,10 +18,6 @@ public class Rectangle {
 	}
 	
 	public void setColor(int pos, String color) {
-	/*throws  IllegalArgumentException*/ 
-		/*if (pos >= size) {
-			throw new  IllegalArgumentException("pos is not in range of size");
-		}*/
 		unit[pos].setColor(color); 
 	}
 	
