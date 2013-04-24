@@ -13,22 +13,6 @@ public class Main {
 	public static void main(String[] args) {
 		
 		/*Scanner scanner;*/
-
-		GameRectangle one = new GameRectangle(1);
-		String newLine = System.getProperty("line.separator");
-
-		
-		
-		StringBuilder tmp = new StringBuilder();
-		tmp.append(one.toString()).toString();
-		
-		System.out.print(tmp);
-		StringBuilder sb= new StringBuilder();
-		sb.append("+----++----+").append(newLine).append("|(_) ||(_) |").append(newLine).append("+----++----+");
-		sb.toString();
-		
-		System.out.print(sb);
-		System.out.print("aa");
 		/*model*/
 		//Field gamefield = new Field(1);
 		
