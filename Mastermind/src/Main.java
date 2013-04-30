@@ -9,14 +9,14 @@ import de.htwg.mastermind.view.Tui;
 public class Main {
 
 
-	
+	static Scanner scanner;
 	public static void main(String[] args) {
 		
-		Scanner scanner;
+		
 		/*model*/
-		Field gamefield = new Field(1);
+		Field gamefield = new Field(4);
 		
-		
+		//System.out.println(gamefield);
 
 		/*controller*/
 		MastermindController controller = new MastermindController(gamefield);
@@ -24,14 +24,17 @@ public class Main {
 		/*view*/
 		Tui tui = new Tui(controller);
 		
-		scanner = new Scanner(System.in);
+		/*main menue*/
+		tui.showTUI();
 		
+		
+		scanner = new Scanner(System.in);
 		
 		
 		
 		boolean continu = true;
 		while(continu) {
-			continu = Tui.input(scanner.next());
+			continu = tui.input(scanner.next());
 		}
 		
 		

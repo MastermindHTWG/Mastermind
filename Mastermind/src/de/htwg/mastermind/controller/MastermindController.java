@@ -12,8 +12,8 @@ public class MastermindController {
 		
 	}
 	
-	public void set() {
-		gamefield.toString(); /*fehler*/
-	}
+	/*public void set() {
+		gamefield.toString();
+	}*/
 
 }
