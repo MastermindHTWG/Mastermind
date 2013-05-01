@@ -36,19 +36,19 @@ public class Tui {
 		}
 		if(next.equalsIgnoreCase("2")) {
 			size = 2;
-			gamefield = new Field(size);
+			gamefield = new Field(2);
 			controller = new MastermindController(gamefield);
 			return true;
 		}
 		if(next.equalsIgnoreCase("3")) {
 			size = 3;
-			gamefield = new Field(size);
+			gamefield = new Field(3);
 			controller = new MastermindController(gamefield);
 			return true;
 		}
 		if(next.equalsIgnoreCase("4")) {
 			size = 4;
-			gamefield = new Field(size);
+			gamefield = new Field(4);
 			controller = new MastermindController(gamefield);
 			return true;
 		}
