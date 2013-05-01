@@ -2,7 +2,7 @@ package de.htwg.mastermind.model;
 
 public class Field {
 
-	private Rectangle [] rec = {new ColorSelection(), new Solution(1)} ;
+	private Rectangle [] rec;
 	private GameRectangle [] game;
 	private int size = 1;
 	private boolean [] aktiv;
@@ -13,7 +13,9 @@ public class Field {
 		aktiv[0] = true;
 		this.game = new GameRectangle[size];
 		this.game[0] = new GameRectangle(size);
-	
+		this.rec = new Rectangle[2];
+		this.rec[0] =  new ColorSelection();
+		this.rec[1] =new Solution(1);
 		
 	}
 	public Field(int size) {
@@ -21,6 +23,9 @@ public class Field {
 		this.game = new GameRectangle[size];
 		this.aktiv = new boolean[size];
 		this.aktiv[0] = true;
+		this.rec = new Rectangle[2];
+		this.rec[0] =  new ColorSelection();
+		this.rec[1] =new Solution(size);
 		for (int i = 0 ; i <size; i++) {
 			this.game[i] = new GameRectangle(size);
 		}
