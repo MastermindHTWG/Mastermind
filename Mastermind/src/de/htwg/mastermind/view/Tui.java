@@ -53,6 +53,7 @@ public class Tui {
 			return true;
 		}
 		if (next.matches("[RBDWGY]")) {
+			System.out.println("ja");
 			pat (next);
 			return true;
 			
@@ -86,6 +87,9 @@ public class Tui {
 		for (int i = 0; i< size; i++ ) {
 			m.find();
 			color[i]=m.group();
+		}
+		for ( String a : color) {
+			System.out.println(a);
 		}
 		return  color;
 	}
