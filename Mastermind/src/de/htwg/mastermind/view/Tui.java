@@ -22,7 +22,9 @@ public class Tui {
 		System.out.println("Wilkommen bei Mastermind! " +
 				"Geben sie eine Zahl von 1-4 ein (groeﬂe des Spielfelds"); 
 	}
-	
+	/*
+	 * @param next : entgegennamhe der eingabe
+	 */
 	public boolean input(String next) {
 
 		if (next.equalsIgnoreCase("exit")) {
