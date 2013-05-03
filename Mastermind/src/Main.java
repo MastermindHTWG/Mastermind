@@ -9,15 +9,13 @@ import de.htwg.mastermind.view.Tui;
 public class Main {
 
 
-	static Scanner scanner;
+	private static Scanner scanner;
 	public static void main(String[] args) {
 		
 		
 		/*model*/
 		Field gamefield = new Field(4);
 		
-		//System.out.println(gamefield);
-
 		/*controller*/
 		MastermindController controller = new MastermindController(gamefield);
 				

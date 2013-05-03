@@ -11,9 +11,4 @@ public class MastermindController {
 		this.gamefield = gamefield;
 		
 	}
-	
-	/*public void set() {
-		gamefield.toString();
-	}*/
-
 }
