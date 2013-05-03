@@ -91,7 +91,7 @@ public class Tui {
 			color[i]=m.group();
 		}
 		for ( String a : color) {
-			System.out.println(a);
+			System.out.println("das haben sie eingegeben" + a);
 		}
 		return  color;
 	}

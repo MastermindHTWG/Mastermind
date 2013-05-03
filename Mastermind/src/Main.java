@@ -24,7 +24,6 @@ public class Main {
 		/*view*/
 		Tui tui = new Tui(controller);
 		
-		System.out.println(gamefield.toString());
 		/*main menue*/
 		tui.showTUI();
 		
