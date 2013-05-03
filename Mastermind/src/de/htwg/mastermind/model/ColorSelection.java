@@ -5,15 +5,24 @@ package de.htwg.mastermind.model;
 public class ColorSelection extends Rectangle{
 
 	private static final int COLORSIZE = 6;
+	private static final int NULL = 0;
+	private static final int ONE = 1;
+	private static final int TWO = 2;
+	private static final int THREE = 3;
+	private static final int FOUR = 4;
+	private static final int FIVE = 5;
 	
 	ColorSelection() {
 		super(COLORSIZE);
-		unit[0].setColor("R");
-		unit[1].setColor("B");
-		unit[2].setColor("O");
-		unit[3].setColor("W");
-		unit[4].setColor("G");
-		unit[5].setColor("Y");
+		Square [] unit = this.getSquare();
+		
+		
+		unit[NULL].setColor("R");
+		unit[ONE].setColor("B");
+		unit[TWO].setColor("O");
+		unit[THREE].setColor("W");
+		unit[FOUR].setColor("G");
+		unit[FIVE].setColor("Y");
 	}
 
 }

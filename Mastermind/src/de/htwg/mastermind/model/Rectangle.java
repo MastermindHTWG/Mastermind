@@ -6,7 +6,7 @@ package de.htwg.mastermind.model;
 public class Rectangle {
 
 	private int size;
-	protected Square [] unit;
+	private Square [] unit;
 	
 	public Rectangle(int size) {
 		
@@ -15,6 +15,13 @@ public class Rectangle {
 		for(int i = 0; i<size;i++) {
 			unit[i] = new Square();
 		}
+	}
+	
+	public void setSquare(Square sq, int i) {
+		unit[i] = sq;
+	}
+	public Square[] getSquare() {
+		return this.unit;
 	}
 	
 	public void setColor(int pos, String color) {
