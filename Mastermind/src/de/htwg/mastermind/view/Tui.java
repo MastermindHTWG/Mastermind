@@ -9,6 +9,11 @@ import de.htwg.mastermind.model.Field;
 
 
 public class Tui {
+	
+	private static final int ONE = 1;
+	private static final int TWO = 2;
+	private static final int THREE = 3;
+	private static final int FOUR = 4;
 
 	private int size;
 	private MastermindController controller;
@@ -31,26 +36,26 @@ public class Tui {
 			return false;
 		}
 		if (next.equalsIgnoreCase("1")) {
-			size = 1;
+			size =ONE;
 			gamefield = new Field();
 			controller = new MastermindController(gamefield);
 			return true;
 		}
 		if(next.equalsIgnoreCase("2")) {
-			size = 2;
-			gamefield = new Field(2);
+			size = TWO;
+			gamefield = new Field(TWO);
 			controller = new MastermindController(gamefield);
 			return true;
 		}
 		if(next.equalsIgnoreCase("3")) {
-			size = 3;
-			gamefield = new Field(3);
+			size = THREE;
+			gamefield = new Field(THREE);
 			controller = new MastermindController(gamefield);
 			return true;
 		}
 		if(next.equalsIgnoreCase("4")) {
-			size = 4;
-			gamefield = new Field(4);
+			size = FOUR;
+			gamefield = new Field(FOUR);
 			controller = new MastermindController(gamefield);
 			return true;
 		}
