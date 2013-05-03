@@ -18,7 +18,6 @@ public class ColorSelectionTest {
 
 	@Test
 	public void test() {
-		one.setSolutionColor();
 		assertArrayEquals( new String[] {"R","B","O", "W","G", "Y"},one.getSquareColor());
 
 	}
