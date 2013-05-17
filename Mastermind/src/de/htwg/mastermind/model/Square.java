@@ -2,7 +2,6 @@ package de.htwg.mastermind.model;
 
 public class Square {
 
-	private static final int HASH = 31;
 	private char color;
 	
 	

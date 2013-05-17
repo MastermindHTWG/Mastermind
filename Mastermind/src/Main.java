@@ -8,13 +8,14 @@ import de.htwg.mastermind.view.Tui;
 
 public class Main {
 
+	private Main() {}
 	private static final int FOUR = 4;
 	private static Scanner scanner;
 	public static void main(String[] args) {
 		
 		
 		/*model*/
-		Field gamefield = new Field(FOUR);
+		Field gamefield = new Field(FOUR); 
 		
 		/*controller*/
 		MastermindController controller = new MastermindController(gamefield);
