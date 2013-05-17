@@ -2,24 +2,19 @@ package de.htwg.mastermind.observer;
 
 
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.*;
 
 public class Observable  {
 
-	private Vector<Observer> subscribers = new Vector<Observer>(2);
+	private List<Observer> subscribers = new Vector<Observer>(2);
 
 	public void addObserver(Observer s) {
-		subscribers.addElement(s);
+		subscribers.add(s);
 	}
 
 	public void removeObserver(Observer s) {
-		subscribers.removeElement(s);
+		subscribers.remove(s);
 	}
-
-	public void removeAllObservers() {
-		subscribers.removeAllElements();
-	}
-
 	public void notifyObservers() {
 		for ( Iterator<Observer> iter = subscribers.iterator(); iter.hasNext();) {
 			Observer observer = iter.next();
