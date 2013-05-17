@@ -45,7 +45,7 @@ public class Field {
 		sb.append(this.rec[1].toString()).append(newLine);
 		/*GameRectangle*/
 		for(int i = size-1; i >= 0; i--)  {
-			sb.append(this.game[i].toString()).append(aktiv[i]).append(newLine);;
+			sb.append(this.game[i].toString()).append(aktiv[i]).append(newLine);
 		}
 		/*ColorSelection*/
 		sb.append(this.rec[0]);

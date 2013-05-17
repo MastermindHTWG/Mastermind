@@ -18,7 +18,6 @@ public class Tui  implements Observer{
 
 	private int size;
 	private MastermindController controller;
-	private Field gamefield;
 	
 	public Tui(MastermindController controller) {
 		this.controller = controller;
@@ -98,7 +97,7 @@ public class Tui  implements Observer{
 	}
 	
 	public boolean createField(int size) {
-		gamefield = new Field(size);
+		Field gamefield = new Field(size);
 		controller = new MastermindController(gamefield);
 		controller.createSolutionThree();
 		this.printTUI();
