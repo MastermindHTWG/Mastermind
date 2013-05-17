@@ -6,9 +6,8 @@ import de.htwg.mastermind.view.Tui;
 
 
 
-public class Main {
+public abstract class Main {
 
-	private Main() {}
 	private static final int FOUR = 4;
 	private static Scanner scanner;
 	public static void main(String[] args) {

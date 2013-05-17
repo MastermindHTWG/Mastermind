@@ -107,8 +107,9 @@ public class Field {
 	public int getAktiv() {
 		int pos = 0;
 		for(int i = 0; i < size; i++ ) {
-			if (aktiv[i])
+			if (aktiv[i]) {
 				pos = i;
+			}				
 		}			
 		return pos;
 	}
