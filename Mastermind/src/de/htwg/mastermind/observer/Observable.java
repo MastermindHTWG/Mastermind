@@ -1,12 +1,11 @@
 package de.htwg.mastermind.observer;
 
 
-import java.util.Iterator;
 import java.util.*;
 
 public class Observable  {
 
-	private List<Observer> subscribers = new Vector<Observer>(2);
+	private List<Observer> subscribers = new ArrayList<Observer>(2);
 
 	public void addObserver(Observer s) {
 		subscribers.add(s);
