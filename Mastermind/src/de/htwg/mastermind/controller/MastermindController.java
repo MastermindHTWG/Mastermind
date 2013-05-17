@@ -60,10 +60,8 @@ public class MastermindController extends Observable {
 						
 						
 						gamefield.setInformation('B', x);
-						System.out.println("Sch");
 					} else {
 						gamefield.setInformation('W', x);
-						System.out.println("wei");
 					}				
 				}				
 			}
