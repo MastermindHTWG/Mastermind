@@ -9,21 +9,12 @@ import de.htwg.mastermind.observer.Observable;
 public class MastermindController extends Observable {
 
 	private Field gamefield;
-	private HashMap<Character, HashMap<Integer,Character>> solution = new HashMap<Character, HashMap<Integer,Character>>();
+	private Map<Character, HashMap<Integer,Character>> solution = new HashMap<Character, HashMap<Integer,Character>>();
 	
 	
 	public MastermindController(Field gamefield) {
-		this.gamefield = gamefield;
+		this.gamefield = gamefield; 
 	}
-	
-	/*
-	 * anzeige der loesung
-	 */
-//	public void solveSolution() {
-//		gamefield.showSolution();
-//		notifyObservers();
-//	}
-	
 	/*
 	 * bestimme farbkombination der loesung
 	 */
@@ -85,9 +76,5 @@ public class MastermindController extends Observable {
 		notifyObservers();
 		
 	}
-	
-//	private void test() {
-//		for (Map<Integer, String> tmp: solution.v)
-//	}
 	
 }

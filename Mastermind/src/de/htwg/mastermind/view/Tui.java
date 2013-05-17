@@ -18,7 +18,7 @@ public class Tui  implements Observer{
 
 	private int size;
 	private MastermindController controller;
-	Field gamefield;
+	private Field gamefield;
 	
 	public Tui(MastermindController controller) {
 		this.controller = controller;
@@ -54,9 +54,6 @@ public class Tui  implements Observer{
 		if(next.equalsIgnoreCase("4")) {
 			size = FOUR;
 			return createField(FOUR);
-		}
-		if (next.equalsIgnoreCase("s")) {
-//			controller.solveSolution();
 		}
 		if(next.equalsIgnoreCase("ok")) {
 			controller.solveInformation();

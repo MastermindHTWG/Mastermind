@@ -31,12 +31,6 @@ public class Field {
 			this.game[i] = new GameRectangle(size);
 		}
 	}
-//	/*
-//	 * anzeige der loesung
-//	 */
-//	public void showSolution() {
-//		((Solution) this.rec[1]).setAktiv(true);
-//	}
 	
 	public int getSize() {
 		return this.size;
@@ -112,9 +106,10 @@ public class Field {
 	}
 	public int getAktiv() {
 		int pos = 0;
-		for(int i = 0; i < size; i++ )
-			if (aktiv[i] == true)
+		for(int i = 0; i < size; i++ ) {
+			if (aktiv[i])
 				pos = i;
+		}			
 		return pos;
 	}
 	

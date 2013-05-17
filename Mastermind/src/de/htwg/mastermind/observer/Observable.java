@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public class Observable  {
 
-	protected Vector<Observer> subscribers = new Vector<Observer>(2);
+	private Vector<Observer> subscribers = new Vector<Observer>(2);
 
 	public void addObserver(Observer s) {
 		subscribers.addElement(s);
