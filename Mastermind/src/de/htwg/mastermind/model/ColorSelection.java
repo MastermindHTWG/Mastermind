@@ -17,12 +17,12 @@ public class ColorSelection extends Rectangle{
 		Square [] unit = this.getSquare();
 		
 		
-		unit[NULL].setColor("R");
-		unit[ONE].setColor("B");
-		unit[TWO].setColor("O");
-		unit[THREE].setColor("W");
-		unit[FOUR].setColor("G");
-		unit[FIVE].setColor("Y");
+		unit[NULL].setColor('R');
+		unit[ONE].setColor('B');
+		unit[TWO].setColor('O');
+		unit[THREE].setColor('W');
+		unit[FOUR].setColor('G');
+		unit[FIVE].setColor('Y');
 	}
 
 }

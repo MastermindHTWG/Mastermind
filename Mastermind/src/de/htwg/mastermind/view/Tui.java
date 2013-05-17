@@ -6,9 +6,10 @@ import java.util.regex.Pattern;
 
 import de.htwg.mastermind.controller.MastermindController;
 import de.htwg.mastermind.model.Field;
+import de.htwg.mastermind.observer.Observer;
 
 
-public class Tui {
+public class Tui  implements Observer{
 	
 	private static final int ONE = 1;
 	private static final int TWO = 2;
@@ -22,7 +23,9 @@ public class Tui {
 	public Tui(MastermindController controller) {
 		this.controller = controller;
 	}
-	/*fehler*/
+	/*
+	 * start selection
+	 */
 	public void showTUI() {
 		System.out.println("Wilkommen bei Mastermind! " +
 				"Geben sie eine Zahl von 1-4 ein (groeﬂe des Spielfelds"); 
@@ -32,50 +35,49 @@ public class Tui {
 	 */
 	public boolean input(String next) {
 
-		if (next.equalsIgnoreCase("exit")) {
+		if (next.equalsIgnoreCase("q")) {
 			return false;
 		}
 		if (next.equalsIgnoreCase("1")) {
-			size =ONE;
-			gamefield = new Field();
-			controller = new MastermindController(gamefield);
-			return true;
+			size =ONE;			
+			return createField(ONE);
 		}
 		if(next.equalsIgnoreCase("2")) {
 			size = TWO;
-			gamefield = new Field(TWO);
-			controller = new MastermindController(gamefield);
-			return true;
+			return createField(TWO);
 		}
 		if(next.equalsIgnoreCase("3")) {
 			size = THREE;
-			gamefield = new Field(THREE);
-			controller = new MastermindController(gamefield);
-			return true;
+			
+			return createField(THREE);
 		}
 		if(next.equalsIgnoreCase("4")) {
 			size = FOUR;
-			gamefield = new Field(FOUR);
-			controller = new MastermindController(gamefield);
-			return true;
+			return createField(FOUR);
 		}
-		if (next.matches("[RBDWGY]")) {
-			pat (next);
-			return true;
-			
+		if (next.equalsIgnoreCase("s")) {
+//			controller.solveSolution();
 		}
-		if (next.matches("[RBDWGY][RBDWGY]")) {
-			pat (next);
-			return true;
-			
+		if(next.equalsIgnoreCase("ok")) {
+			controller.solveInformation();
 		}
-		if (next.matches("[RBDWGY][RBDWGY][RBDWGY]")) {
-			pat (next);
+		if (next.matches("[RBOWGY]")) {
+			controller.setColor(pat (next));
 			return true;
 			
 		}
-		if (next.matches("[RBDWGY][RBDWGY][RBDWGY][RBDWGY]")) {
-			pat (next);
+		if (next.matches("[RBOWGY][RBOWGY]")) {
+			controller.setColor(pat (next));
+			return true;
+			
+		}
+		if (next.matches("[RBOWGY][RBOWGY][RBOWGY]")) {
+			controller.setColor(pat (next));
+			return true;
+			
+		}
+		if (next.matches("[RBOWGY][RBOWGY][RBOWGY][RBOWGY]")) {
+			controller.setColor(pat (next));
 			return true;
 			
 		}
@@ -86,15 +88,38 @@ public class Tui {
 	/*
 	 * @param String next : color entry from player
 	 */
-	private String [] pat(String next) {
-		Pattern pat = Pattern.compile("[RBDWGY]");
+	private char [] pat(String next) {
+		Pattern pat = Pattern.compile("[RBOWGY]");
 		Matcher m = pat.matcher(next);
-		String [] color = new String [size];
+		char [] color = new char [size];
 		for (int i = 0; i< size; i++ ) {
 			m.find();
-			color[i]=m.group();
+			char tmp[]=m.group().toCharArray();
+			color[i]=tmp[0];
 		}
 		return  color;
+	}
+	
+	public boolean createField(int size) {
+		gamefield = new Field(size);
+		controller = new MastermindController(gamefield);
+		controller.createSolutionThree();
+		this.printTUI();
+		controller.addObserver(this);
+		return true;
+	}
+	/*
+	 * Observer update()
+	 */
+	@Override
+	public void update() {
+		printTUI();
+	}
+	
+	private void printTUI() {
+		System.out.println(controller.getGamfieldString());
+		System.out.println("Pleas enter a command q - quit, s - solve");
+		
 	}
 
 }

@@ -14,19 +14,15 @@ public class RectangleTest {
 	@Before
 	public void setUp() {
 		one = new Rectangle(1);
-		one.setSquare(new Square(),0);
+		//one.setSquare(new Square(),0);
 		two = new Rectangle(1);
-		two.setSquare(new Square(),0);
+		//two.setSquare(new Square(),0);
 	}
 
 	@Test
 	public void test() {
 
 		assertEquals(one.toString(), two.toString());
-	}
-	@Test
-	public void getSqaureTests() {
-		assertArrayEquals(one.getSquare(), two.getSquare());
 	}
 
 }

@@ -18,7 +18,7 @@ public class ColorSelectionTest {
 
 	@Test
 	public void test() {
-		assertArrayEquals( new String[] {"R","B","O", "W","G", "Y"},one.getSquareColor());
+		assertArrayEquals( new char[] {'R','B','O', 'W','G', 'Y'},one.getSquareColor());
 
 	}
 

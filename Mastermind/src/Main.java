@@ -28,7 +28,7 @@ public class Main {
 		
 		scanner = new Scanner(System.in);
 		
-		
+	
 		
 		boolean continu = true;
 		while(continu) {

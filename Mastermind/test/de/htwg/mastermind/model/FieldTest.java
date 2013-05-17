@@ -13,6 +13,7 @@ public class FieldTest {
 	Field two;
 	Field three;
 	Field four;
+	Field six;
 	
 	@Before
 	public void setUp() {
@@ -20,6 +21,7 @@ public class FieldTest {
 		two = new Field();
 		three = new Field(1);
 		four  = new Field(1);
+		six = new Field(2);
 	}
 
 	@Test
@@ -29,6 +31,26 @@ public class FieldTest {
 	@Test
 	public void fieldTest(){
 		assertEquals(three.toString(), four.toString());
+	}
+	@Test
+	public void getSizeTest() {
+		/*benutze Field three zum Test ( mit groeﬂse 1)*/
+		assertEquals(three.getSize(), 1);
+	}
+	@Test
+	public void setGetAktivTest() {
+		six.setAktiv(1);
+		assertEquals(six.getAktiv(),1);
+	}
+	@Test
+	public void setGetGameRectangleColorTest() {
+		one.setGameRectangleColor(new char [] {'R'});
+		assertArrayEquals(new char [] {'R'}, one.getGameRectangleColor());
+	}
+	@Test
+	public void setGetSolution() {
+		one.setSolution('R', 0);
+		assertArrayEquals(new char [] {'R'}, one.getSolution());
 	}
 	
 }

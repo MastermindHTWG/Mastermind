@@ -17,20 +17,20 @@ public class Rectangle {
 		}
 	}
 	
-	public void setSquare(Square sq, int i) {
-		unit[i] = sq;
-	}
 	public Square[] getSquare() {
 		return this.unit;
 	}
 	
-	public void setColor(int pos, String color) {
+	/*
+	 * farbe setzen
+	 */
+	public void setColor(char color, int pos) {
 		unit[pos].setColor(color); 
 	}
 	
-	public String[] getSquareColor(){
+	public char[] getSquareColor(){
 		
-		String [] color = new String[unit.length];
+		char [] color = new char[unit.length];
 		int i = 0;
 		for(Square tmp: unit) {
 	

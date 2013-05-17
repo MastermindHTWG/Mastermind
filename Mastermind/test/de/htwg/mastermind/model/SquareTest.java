@@ -23,33 +23,14 @@ public class SquareTest {
 	
 	@Test
 	public void testSquareGetColor() {
-		one.setColor("red");
-		assertEquals("red",one.getColor().toString());
+		one.setColor('R');
+		assertEquals("(R)",one.toString());
 	}
-	@Test
-	public void hashCodeTest() {
-		one.setColor("red");
-		two.setColor("red");
-		assertEquals(two.hashCode(),one.hashCode());
-		
-	}
-	
-	@Test
-	public void trueEqualsTest() {
-		one.setColor("red");
-		two.setColor("red");
-		assertTrue(one.equals(two));
-	}
-	@Test
-	public void falseEqualsTest() {
-		one.setColor("red");
-		two.setColor("blue");
-		assertFalse(one.equals(two));
-	}
+
 	
 	@Test
 	public void toStringTest() {
-		toString.setColor("B");
+		toString.setColor('B');
 		assertEquals(toString.toString(),"(B)");
 		
 		

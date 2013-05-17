@@ -15,11 +15,11 @@ public class PlayerSetColorTest {
 
 	@Test
 	public void getSquareColorTestEquals() {
-		one.setColor(0, "R");
-		one.setColor(1, "R");
-		one.setColor(2, "R");
-		one.setColor(3, "R");
+		one.setColor('R',0);
+		one.setColor('R',1);
+		one.setColor('R',2);
+		one.setColor('R',3);
 		
-		assertArrayEquals(new String [] {"R","R","R","R"},one.getSquareColor());		
+		assertArrayEquals(new char [] {'R','R','R','R'},one.getSquareColor());		
 	}
 }

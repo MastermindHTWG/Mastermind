@@ -18,8 +18,8 @@ public class InformationTest {
 
 	@Test
 	public void setGetInfoColortest() {
-		one.setColor(0,"blue");
-		assertArrayEquals(new String[] {"blue"},one.getSquareColor());
+		one.setColor('B',0);
+		assertArrayEquals(new char[] {'B'},one.getSquareColor());
 	}
 
 }

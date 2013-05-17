@@ -15,14 +15,14 @@ public class SolutionTest {
 	@Before
 	public void setUp() {
 		two = new Solution(3);
-		two.setColor(0, "black");
-		two.setColor(1, "green");
-		two.setColor(2, "red");
+		two.setColor('B',0);
+		two.setColor('G',1);
+		two.setColor('R',2);
 	}
 	
 	@Test
 	public void testGetSquareColor(){
-		assertArrayEquals(new String[] {"black","green","red"},two.getSquareColor());
+		assertArrayEquals(new char[] {'B','G','R'},two.getSquareColor());
 		
 	}
 }
