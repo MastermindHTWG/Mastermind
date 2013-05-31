@@ -1,6 +1,4 @@
-package de.htwg.mastermind.model;
-
-
+package de.htwg.mastermind.model.implementierung;
 
 public class ColorSelection extends Rectangle{
 
@@ -12,7 +10,7 @@ public class ColorSelection extends Rectangle{
 	private static final int FOUR = 4;
 	private static final int FIVE = 5;
 	
-	ColorSelection() {
+	public ColorSelection() {
 		super(COLORSIZE);
 		Square [] unit = this.getSquare();
 		

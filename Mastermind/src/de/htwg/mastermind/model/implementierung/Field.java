@@ -1,6 +1,9 @@
-package de.htwg.mastermind.model;
+package de.htwg.mastermind.model.implementierung;
 
-public class Field {
+import de.htwg.mastermind.model.IField;
+
+
+public class Field implements IField{
 
 	private Rectangle [] rec;
 	private GameRectangle [] game;
@@ -19,6 +22,7 @@ public class Field {
 		this.rec[1] =new Solution(1);
 		
 	}
+	
 	public Field(int size) {
 		this.size = size;
 		this.game = new GameRectangle[size];
@@ -26,12 +30,15 @@ public class Field {
 		this.aktiv[0] = true;
 		this.rec = new Rectangle[2];
 		this.rec[0] =  new ColorSelection();
-		this.rec[1] =new Solution(size);
+		this.rec[1] = new Solution(size);
 		for (int i = 0 ; i <size; i++) {
 			this.game[i] = new GameRectangle(size);
 		}
 	}
 	
+	/*
+	 * @return numbers of squares in a Gamefield
+	 */
 	public int getSize() {
 		return this.size;
 	}
@@ -54,7 +61,8 @@ public class Field {
 	}
 	
 	/*
-	 * Setzen einer loesung / zu loesende farbkombination
+	 *@param color color of one solution
+	 *qparam pos at postion pos
 	 */
 	public void setSolution(char color, int pos) {
 		if(pos < size) {
@@ -62,14 +70,14 @@ public class Field {
 		}			
 	}
 	/*
-	 * gebe solution zurueck
+	 *@return char [] of solution
 	 */
 	public char[] getSolution() {
 		return rec[1].getSquareColor();
 	}
 	
 	/*
-	 * setzte farbe des einzelnen GameRectangle
+	 *@ param color: set the player Color
 	 */
 	public void setGameRectangleColor(char [] color) {
 		int pos = 0,x = 0;
@@ -80,7 +88,7 @@ public class Field {
 		}		
 	}
 	/*
-	 * gebe array mit farbe des einzelnen GameRectangle
+	 *@ return char[] of color form Player
 	 */
 	public char[] getGameRectangleColor() {
 		int pos = this.getAktiv(); 
@@ -100,10 +108,14 @@ public class Field {
 			aktiv[pos] = true;
 			return true;
 		} else {
-			aktiv[pos-1] = false;
+			aktiv[size-1] = false;
 			return false;
 		}			
 	}
+	
+	/*
+	 * @return position of the active GameRectangle 
+	 */
 	public int getAktiv() {
 		int pos = 0;
 		for(int i = 0; i < size; i++ ) {
@@ -115,14 +127,34 @@ public class Field {
 	}
 	
 	/*
-	 * info setzen
+	 *@ return Information as char []
+	 */
+	public char [] getInformation() {
+		int arrayPos = this.getAktiv();
+		return game[arrayPos].informationGetColor();
+	}
+	
+	/*
+	 * set the Informations white or black if the color in 
+	 * PlayerSetColor is right (position)
+	 * @param color
+	 * @param pos position of the array in Information
 	 */
 	public void setInformation(char color, int pos) {
 		int arrayPos = this.getAktiv();
-		game[arrayPos].infoSetColor(color, arrayPos);	
+		game[arrayPos].informationSetColor(color, pos);	
 	}
 	
+	/*
+	 *@param visible true visible show solution
+	 *				 false show *
+	 */
+	public void setVisibleSolution(boolean visible) {
+		((Solution) rec[1]).setVisible(visible);
+	}
 	
-	
+	public boolean getVisibleSolution() {
+		return ((Solution) rec[1]).getVisible();
+	}
 }
 

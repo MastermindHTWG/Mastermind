@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.htwg.mastermind.model.Solution;
+import de.htwg.mastermind.model.implementierung.Solution;
 
 public class SolutionTest {
 	
@@ -17,14 +17,20 @@ public class SolutionTest {
 		two = new Solution(3);
 		two.setColor('B',0);
 		two.setColor('G',1);
-		two.setColor('R',2);
+		two.setColor('R',2);		
 	}
 	
 	@Test
 	public void testGetSquareColor(){
 		assertArrayEquals(new char[] {'B','G','R'},two.getSquareColor());
-		
 	}
+	
+	@Test
+	public void visibleTest() {
+		two.setVisible(true);
+		assertTrue(two.getVisible());
+	}
+	
 }
 
 

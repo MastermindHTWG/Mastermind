@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.htwg.mastermind.model.implementierung.PlayerSetColor;
+
 public class PlayerSetColorTest {
 
 	PlayerSetColor one;

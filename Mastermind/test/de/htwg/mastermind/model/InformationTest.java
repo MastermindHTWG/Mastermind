@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.htwg.mastermind.model.Information;
+import de.htwg.mastermind.model.implementierung.Information;
 
 public class InformationTest {
 

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.htwg.mastermind.model.Field;
+import de.htwg.mastermind.model.implementierung.Field;
 
 public class FieldTest {
 
@@ -23,6 +23,8 @@ public class FieldTest {
 		four  = new Field(1);
 		six = new Field(2);
 	}
+	
+	
 
 	@Test
 	public void toStringTest() {
@@ -51,6 +53,24 @@ public class FieldTest {
 	public void setGetSolution() {
 		one.setSolution('R', 0);
 		assertArrayEquals(new char [] {'R'}, one.getSolution());
+	}
+	
+	@Test
+	public void setGetInformationTest() {
+		one.setInformation('B', 0);
+		char [] tmp = one.getInformation();
+		assertTrue(tmp[0] == 'B');
+	}
+	
+	@Test
+	public void setGetVisibleInformation() {
+		one.setVisibleSolution(true);
+		assertTrue(one.getVisibleSolution());
+	}
+	
+	@Test
+	public void setAktiv() {
+		assertFalse(one.setAktiv(2));
 	}
 	
 }

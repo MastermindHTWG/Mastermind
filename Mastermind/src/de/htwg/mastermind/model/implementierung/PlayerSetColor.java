@@ -1,4 +1,5 @@
-package de.htwg.mastermind.model;
+package de.htwg.mastermind.model.implementierung;
+
 
 public class PlayerSetColor extends Rectangle{
 	

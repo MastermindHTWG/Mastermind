@@ -1,4 +1,5 @@
-package de.htwg.mastermind.model;
+package de.htwg.mastermind.model.implementierung;
+
 
 public class Square {
 
@@ -9,10 +10,10 @@ public class Square {
 		this.color = '_'; 
 	}
 	
-	void setColor(char color) {
+	public void setColor(char color) {
 		this.color = color;
 	}
-	char getColor() {
+	public char getColor() {
 		return this.color;
 	}
 	/*

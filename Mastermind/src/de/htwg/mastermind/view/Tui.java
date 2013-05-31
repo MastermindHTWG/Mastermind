@@ -4,8 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-import de.htwg.mastermind.controller.MastermindController;
-import de.htwg.mastermind.model.Field;
+import de.htwg.mastermind.controller.implementierung.MastermindController;
+import de.htwg.mastermind.model.implementierung.Field;
 import de.htwg.mastermind.observer.Observer;
 
 
@@ -37,6 +37,9 @@ public class Tui  implements Observer{
 		if (next.equalsIgnoreCase("q")) {
 			return false;
 		}
+		if(next.equalsIgnoreCase("s")){
+			controller.setVisibleSolution(true);
+		}
 		if (next.equalsIgnoreCase("1")) {
 			size =ONE;			
 			return createField(ONE);
@@ -55,25 +58,25 @@ public class Tui  implements Observer{
 			return createField(FOUR);
 		}
 		if(next.equalsIgnoreCase("ok")) {
-			controller.solveInformation();
+			controller.setBlackOrWith();
 		}
 		if (next.matches("[RBOWGY]")) {
-			controller.setColor(pat (next));
+			controller.playerSetColor(pat (next));
 			return true;
 			
 		}
 		if (next.matches("[RBOWGY][RBOWGY]")) {
-			controller.setColor(pat (next));
+			controller.playerSetColor(pat (next));
 			return true;
 			
 		}
 		if (next.matches("[RBOWGY][RBOWGY][RBOWGY]")) {
-			controller.setColor(pat (next));
+			controller.playerSetColor(pat (next));
 			return true;
 			
 		}
 		if (next.matches("[RBOWGY][RBOWGY][RBOWGY][RBOWGY]")) {
-			controller.setColor(pat (next));
+			controller.playerSetColor(pat (next));
 			return true;
 			
 		}
@@ -113,9 +116,12 @@ public class Tui  implements Observer{
 	}
 	
 	private void printTUI() {
-		System.out.println(controller.getGamfieldString());
-		System.out.println("Pleas enter a command q - quit, s - solve");
+		System.out.println(controller.getGamfieldString() + "\n" +
+				"Pleas enter a command q - quit, s - solve");
+
 		
 	}
+	
+	
 
 }

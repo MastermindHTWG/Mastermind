@@ -1,4 +1,5 @@
-package de.htwg.mastermind.model;
+package de.htwg.mastermind.model.implementierung;
+
 
 public class GameRectangle {
 
@@ -24,21 +25,40 @@ public class GameRectangle {
 		sb.append(info.row()).append(psc.row());
 		return sb.toString();
 	}
+	
+	/*
+	 * @param color give color to playerSetColor
+	 * @param pos give pos to playerSetColor
+	 */
 	public void playerSetColor(char color,int pos) {
 		psc.setColor(color, pos); 
 	}
+	
+	
 	/*
-	 * gebe info farben zurueck
-	 */
-	public void infoSetColor(char color,int pos) {
-		info.setColor(color, pos);
-	}
-	/*
-	 * gebe gesetzte farben zurueck
+	 * @retrun 
 	 */
 	public char[] getSetColor() {
 		return psc.getSquareColor();
 	}
+	
+	
+	/*
+	 * @param color color on postion pos
+	 * @param pos postion on array
+	 */
+	public void informationSetColor(char color,int pos) {
+		info.setColor(color, pos);
+	}
+	
+	
+	/*
+	 * @return return char [] of information Color
+	 */
+	public char [] informationGetColor() {
+		return info.getSquareColor();
+	}
+
 	
 	
 	

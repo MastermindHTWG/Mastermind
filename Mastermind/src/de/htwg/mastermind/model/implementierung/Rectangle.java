@@ -1,13 +1,13 @@
-package de.htwg.mastermind.model;
-/*
- * 
- */
+package de.htwg.mastermind.model.implementierung;
 
 public class Rectangle {
 
 	private int size;
 	private Square [] unit;
 	
+	/*
+	 * Konstruktor
+	 */
 	public Rectangle(int size) {
 		
 		this.size = size;
@@ -16,17 +16,19 @@ public class Rectangle {
 			unit[i] = new Square();
 		}
 	}
-	
+	/*
+	 * @return number of squares
+	 */
+	public int getSize() {
+		return this.size;
+	}
+	/*
+	 * @return Square array
+	 */
 	public Square[] getSquare() {
 		return this.unit;
 	}
 	
-	/*
-	 * farbe setzen
-	 */
-	public void setColor(char color, int pos) {
-		unit[pos].setColor(color); 
-	}
 	
 	public char[] getSquareColor(){
 		
@@ -39,6 +41,14 @@ public class Rectangle {
 		}
 		return  color;		
 	}
+	/*
+	 * farbe setzen
+	 */
+	public void setColor(char color, int pos) {
+		unit[pos].setColor(color); 
+	}
+	
+
 	
 	@Override
 	public String toString() {
