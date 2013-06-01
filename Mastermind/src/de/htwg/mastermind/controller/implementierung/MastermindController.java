@@ -5,30 +5,76 @@ import java.util.Map.Entry;
 
 import de.htwg.mastermind.controller.IMastermindController;
 import de.htwg.mastermind.model.IField;
+import de.htwg.mastermind.model.implementierung.Field;
 
 
-import de.htwg.mastermind.observer.Observable;
+import de.htwg.mastermind.util.observer.Observable;
 
 public class MastermindController extends Observable implements IMastermindController{
 
 	private IField gamefield;	
+	private String statusLine;
+	private boolean win = false;
 	
-	public MastermindController(IField gamefield) {
+	public MastermindController(IField gamefield) {  
 		this.gamefield = gamefield;
 	}
+	
+	/*
+	 * create a new Field to play
+	 * @param size size of the Field
+	 */
+	public void createField(int size) {
+		this.gamefield = new Field(size);
+		statusLine = "New Field was created";
+		this.setSolution();
+		notifyObservers();
+	}
+	
+	
+	
 	/*
 	 * bestimme farbkombination der loesung
 	 */
-	public void createSolutionThree() {
-		
-		char color[] = {'R','G','B'};
+	public void setSolution() {
+				
 		int pos = 0;
-		for(char col : color) {
-			gamefield.setSolution(col, pos);
+		char color [] = this.createSolution();		
+		
+		for(char c: color ) {
+			gamefield.setSolution(c, pos);
 			pos++;		
 		}
-		notifyObservers();
 	}
+	
+	public char [] createSolution() {
+		
+		char color[] = new char[gamefield.getSize()];
+				
+		for (int i = 0; i< gamefield.getSize();i++) {
+			int rnd = (int) (Math.random() * (6));
+			if (rnd == 0) {
+				color [i] = 'R';
+			} else if(rnd == 1) {
+				color [i] = 'B';
+			} else if (rnd == 2) {
+				color [i] = 'O'; 
+			} else if (rnd == 3) {
+				color[i] = 'W';
+			} else if ( rnd == 4) {
+				color[i] = 'G';
+			} else if( rnd == 5) {
+				color[i] = 'Y';
+			} else {
+				color[i] = '_';
+			}
+		}
+		
+		return color;
+	}
+	
+	
+	
 	public void setVisibleSolution(boolean visible) {
 		gamefield.setVisibleSolution(visible);
 		notifyObservers();
@@ -45,7 +91,10 @@ public class MastermindController extends Observable implements IMastermindContr
 		gamefield.setGameRectangleColor(color);
 		notifyObservers();
 	}
-	
+	/*
+	 * auswerten der Farbkombinationen die vom Spieler gesetzt wurden
+	 * und ueberpruefen ob der spieler gewonnen hat
+	 */
 	public void setBlackOrWith() {
 		char [] playerSetColor = gamefield.getGameRectangleColor();
 		char [] solutionColor = gamefield.getSolution();
@@ -85,9 +134,9 @@ public class MastermindController extends Observable implements IMastermindContr
 				gamefield.setInformation('W', count);
 				count++;
 			}
-		}
+		}	
 		
-		
+		this.checkWin();
 		/*if fuer ende der Spielrunde*/
 		gamefield.setAktiv(gamefield.getAktiv()+1);	
 		notifyObservers();
@@ -96,16 +145,23 @@ public class MastermindController extends Observable implements IMastermindContr
 	}
 	
 	
-	
-	boolean checkWin() {
+	private boolean checkWin() {
 		char[] unit = gamefield.getInformation();
 		int size = gamefield.getSize();
 		for(int x = 0; x< size; x++) {
 			if(!(unit[x] == 'B')) {
 				return false;
 			}
-		}		
+		}
+		statusLine = "You win, continue with yes.";
 		return true;
 	}
 	
+	public boolean getWin() {
+		return win;
+	}
+	
+	public String getStatus() {
+		return statusLine;
+	}
 }

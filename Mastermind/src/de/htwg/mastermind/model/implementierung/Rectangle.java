@@ -29,7 +29,9 @@ public class Rectangle {
 		return this.unit;
 	}
 	
-	
+	/*
+	 * @return color of the content
+	 */
 	public char[] getSquareColor(){
 		
 		char [] color = new char[unit.length];
@@ -42,7 +44,8 @@ public class Rectangle {
 		return  color;		
 	}
 	/*
-	 * farbe setzen
+	 * @param color color for postion pos
+	 * @param pos position of color in the array unit
 	 */
 	public void setColor(char color, int pos) {
 		unit[pos].setColor(color); 

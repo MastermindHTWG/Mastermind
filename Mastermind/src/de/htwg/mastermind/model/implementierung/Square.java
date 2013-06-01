@@ -10,9 +10,15 @@ public class Square {
 		this.color = '_'; 
 	}
 	
+	/*
+	 * @param color, color of the circles
+	 */
 	public void setColor(char color) {
 		this.color = color;
 	}
+	/*
+	 * @return color of the square
+	 */
 	public char getColor() {
 		return this.color;
 	}

@@ -1,4 +1,4 @@
-package de.htwg.mastermind.observer;
+package de.htwg.mastermind.util.observer;
 
 
 /**

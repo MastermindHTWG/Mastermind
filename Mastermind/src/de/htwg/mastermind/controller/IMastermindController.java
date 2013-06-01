@@ -3,7 +3,7 @@ package de.htwg.mastermind.controller;
 public interface IMastermindController {
 
 	
-	public void createSolutionThree();
+	public  char [] createSolution();
 	
 	public String getGamfieldString();
 	
@@ -13,5 +13,5 @@ public interface IMastermindController {
 	
 	public void setVisibleSolution(boolean visible);
 	
-	
+	public void setSolution();
 }

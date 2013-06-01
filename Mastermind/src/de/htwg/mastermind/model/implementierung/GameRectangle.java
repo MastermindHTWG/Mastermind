@@ -36,7 +36,7 @@ public class GameRectangle {
 	
 	
 	/*
-	 * @retrun 
+	 * @retrun char [] from set color by player
 	 */
 	public char[] getSetColor() {
 		return psc.getSquareColor();

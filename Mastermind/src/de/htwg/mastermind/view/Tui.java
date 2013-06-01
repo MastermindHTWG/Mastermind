@@ -5,8 +5,7 @@ import java.util.regex.Pattern;
 
 
 import de.htwg.mastermind.controller.implementierung.MastermindController;
-import de.htwg.mastermind.model.implementierung.Field;
-import de.htwg.mastermind.observer.Observer;
+import de.htwg.mastermind.util.observer.Observer;
 
 
 public class Tui  implements Observer{
@@ -21,19 +20,20 @@ public class Tui  implements Observer{
 	
 	public Tui(MastermindController controller) {
 		this.controller = controller;
+		controller.addObserver(this);
 	}
 	/*
 	 * start selection
 	 */
 	public void showTUI() {
-		System.out.println("Wilkommen bei Mastermind! " +
-				"Geben sie eine Zahl von 1-4 ein (groeﬂe des Spielfelds"); 
+		System.out.println("Welcome to Mastermind! Enjoy the game." +
+				"Geben sie eine Zahl von 1-4 ein (groeﬂe des Spielfelds)."); 
 	}
 	/*
 	 * @param next : entgegennamhe der eingabe
 	 */
 	public boolean input(String next) {
-
+		
 		if (next.equalsIgnoreCase("q")) {
 			return false;
 		}
@@ -42,43 +42,39 @@ public class Tui  implements Observer{
 		}
 		if (next.equalsIgnoreCase("1")) {
 			size =ONE;			
-			return createField(ONE);
+			controller.createField(ONE);
 		}
 		if(next.equalsIgnoreCase("2")) {
 			size = TWO;
-			return createField(TWO);
+			controller.createField(TWO);
 		}
 		if(next.equalsIgnoreCase("3")) {
 			size = THREE;
-			
-			return createField(THREE);
+			controller.createField(THREE);
 		}
 		if(next.equalsIgnoreCase("4")) {
 			size = FOUR;
-			return createField(FOUR);
+			controller.createField(FOUR);
 		}
 		if(next.equalsIgnoreCase("ok")) {
 			controller.setBlackOrWith();
 		}
+		// if the command line has the form B, set the square color on position one to Black
 		if (next.matches("[RBOWGY]")) {
 			controller.playerSetColor(pat (next));
-			return true;
-			
+
 		}
+		// if the command line has the form RB, set the square color on position one to Red an pos two to Black
 		if (next.matches("[RBOWGY][RBOWGY]")) {
 			controller.playerSetColor(pat (next));
-			return true;
-			
+
 		}
 		if (next.matches("[RBOWGY][RBOWGY][RBOWGY]")) {
 			controller.playerSetColor(pat (next));
-			return true;
-			
+
 		}
 		if (next.matches("[RBOWGY][RBOWGY][RBOWGY][RBOWGY]")) {
-			controller.playerSetColor(pat (next));
-			return true;
-			
+			controller.playerSetColor(pat (next));			
 		}
 		return true;
 		
@@ -99,14 +95,7 @@ public class Tui  implements Observer{
 		return  color;
 	}
 	
-	public boolean createField(int size) {
-		Field gamefield = new Field(size);
-		controller = new MastermindController(gamefield);
-		controller.createSolutionThree();
-		this.printTUI();
-		controller.addObserver(this);
-		return true;
-	}
+
 	/*
 	 * Observer update()
 	 */
@@ -117,7 +106,8 @@ public class Tui  implements Observer{
 	
 	private void printTUI() {
 		System.out.println(controller.getGamfieldString() + "\n" +
-				"Pleas enter a command q - quit, s - solve");
+								controller.getStatus()+"\n" +
+									"Pleas enter command (q-quit,s-solve,n-new, BB for Black Black in Gamefield, ok-to confirm input");
 
 		
 	}

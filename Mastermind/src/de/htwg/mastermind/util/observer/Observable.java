@@ -1,4 +1,4 @@
-package de.htwg.mastermind.observer;
+package de.htwg.mastermind.util.observer;
 
 
 import java.util.*;
@@ -14,6 +14,11 @@ public class Observable  {
 	public void removeObserver(Observer s) {
 		subscribers.remove(s);
 	}
+	
+	public void removeAllObservers() {
+		subscribers.clear();
+	}
+	
 	public void notifyObservers() {
 		for ( Iterator<Observer> iter = subscribers.iterator(); iter.hasNext();) {
 			Observer observer = iter.next();
