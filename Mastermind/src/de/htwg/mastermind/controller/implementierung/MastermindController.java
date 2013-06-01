@@ -117,14 +117,13 @@ public class MastermindController extends Observable implements IMastermindContr
 					if(x == y) {
 						blackWhiteContainer.put(x, 'B');
 						break;
-					} else {
-						if(blackWhiteContainer.containsKey(x) && blackWhiteContainer.get(x) != 'B' &&  !whihteAvaliable) {
+					} 
+					else if(blackWhiteContainer.containsKey(x) && blackWhiteContainer.get(x) != 'B' &&  !whihteAvaliable) {
 							blackWhiteContainer.put(x, 'W');
 							 whihteAvaliable = true;
-						} else if (!whihteAvaliable){
-							 whihteAvaliable = true;
-							 blackWhiteContainer.put(x, 'W');
-						}	
+					} else if (!whihteAvaliable){
+						 whihteAvaliable = true;
+						 blackWhiteContainer.put(x, 'W');
 					}
 				}
 			}
