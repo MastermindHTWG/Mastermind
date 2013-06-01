@@ -3,15 +3,15 @@ package de.htwg.mastermind.controller;
 public interface IMastermindController {
 
 	
-	public  char [] createSolution();
+	char [] createSolution();
 	
-	public String getGamfieldString();
+	String getGamfieldString();
 	
-	public void playerSetColor(char [] color);
+	void playerSetColor(char [] color);
 	
-	public void setBlackOrWith();
+	void setBlackOrWith();
 	
-	public void setVisibleSolution(boolean visible);
+	void setVisibleSolution(boolean visible);
 	
-	public void setSolution();
+	void setSolution();
 }
