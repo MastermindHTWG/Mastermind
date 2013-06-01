@@ -12,9 +12,6 @@ public class Solution extends Rectangle{
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
-	public boolean getVisible() {
-		return this.visible;
-	}
 
 	@Override
 	public String column() {

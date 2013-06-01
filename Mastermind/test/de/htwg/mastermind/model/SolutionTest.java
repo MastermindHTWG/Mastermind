@@ -28,7 +28,6 @@ public class SolutionTest {
 	@Test
 	public void visibleTest() {
 		two.setVisible(true);
-		assertTrue(two.getVisible());
 		String newLine = System.getProperty("line.separator");
 		assertEquals("+------------+"+newLine+"|(B) (G) (R) |"+newLine+"+------------+",two.toString());
 	}

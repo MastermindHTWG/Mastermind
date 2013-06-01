@@ -53,6 +53,10 @@ public class MastermindController extends Observable implements IMastermindContr
 		}
 	}
 	
+	public char [] getSolution() {
+		return gamefield.getSolution();
+	}
+	
 	public char [] createSolution() {
 		
 		char color[] = new char[gamefield.getSize()];
@@ -160,12 +164,7 @@ public class MastermindController extends Observable implements IMastermindContr
 		}
 		statusLine = "You win, continue with yes.";
 		return true;
-	}
-	
-	public boolean getWin() {
-		return win;
-	}
-	
+	}	
 	public String getStatus() {
 		return statusLine;
 	}

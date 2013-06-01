@@ -62,11 +62,6 @@ public class FieldTest {
 		assertTrue(tmp[0] == 'B');
 	}
 	
-	@Test
-	public void setGetVisibleInformation() {
-		one.setVisibleSolution(true);
-		assertTrue(one.getVisibleSolution());
-	}
 	
 	@Test
 	public void setAktiv() {

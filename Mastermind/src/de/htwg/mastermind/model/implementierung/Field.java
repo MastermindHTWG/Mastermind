@@ -153,8 +153,5 @@ public class Field implements IField{
 		((Solution) rec[1]).setVisible(visible);
 	}
 	
-	public boolean getVisibleSolution() {
-		return ((Solution) rec[1]).getVisible();
-	}
 }
 
