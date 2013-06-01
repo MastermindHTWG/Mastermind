@@ -15,6 +15,12 @@ public class MastermindController extends Observable implements IMastermindContr
 	private IField gamefield;	
 	private String statusLine;
 	private boolean win = false;
+	private static final int ONE = 1;
+	private static final int TWO = 2;
+	private static final int THREE = 3;
+	private static final int FOUR = 4;
+	private static final int FIVE = 5;
+	
 	
 	public MastermindController(IField gamefield) {  
 		this.gamefield = gamefield;
@@ -55,15 +61,15 @@ public class MastermindController extends Observable implements IMastermindContr
 			int rnd = (int) (Math.random() * (6));
 			if (rnd == 0) {
 				color [i] = 'R';
-			} else if(rnd == 1) {
+			} else if(rnd == ONE) {
 				color [i] = 'B';
-			} else if (rnd == 2) {
+			} else if (rnd == TWO) {
 				color [i] = 'O'; 
-			} else if (rnd == 3) {
+			} else if (rnd == THREE) {
 				color[i] = 'W';
-			} else if ( rnd == 4) {
+			} else if ( rnd == FOUR) {
 				color[i] = 'G';
-			} else if( rnd == 5) {
+			} else if( rnd == FIVE) {
 				color[i] = 'Y';
 			} else {
 				color[i] = '_';

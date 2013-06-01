@@ -12,11 +12,7 @@ public abstract class Main {
 
 	private static final int FOUR = 4;
 	private static Scanner scanner;
-	
-	public static int myyRandom() {
-		return (int) (Math.random() * (6));
-	}
-	
+		
 	
 	public static void main(String[] args) {
 		
