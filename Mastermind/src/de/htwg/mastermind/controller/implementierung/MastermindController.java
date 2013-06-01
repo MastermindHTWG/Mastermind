@@ -20,7 +20,7 @@ public class MastermindController extends Observable implements IMastermindContr
 	private static final int THREE = 3;
 	private static final int FOUR = 4;
 	private static final int FIVE = 5;
-	
+	private static final int SIX = 6;
 	
 	public MastermindController(IField gamefield) {  
 		this.gamefield = gamefield;
@@ -58,7 +58,7 @@ public class MastermindController extends Observable implements IMastermindContr
 		char color[] = new char[gamefield.getSize()];
 				
 		for (int i = 0; i< gamefield.getSize();i++) {
-			int rnd = (int) (Math.random() * (6));
+			int rnd = (int) (Math.random() * (SIX));
 			if (rnd == 0) {
 				color [i] = 'R';
 			} else if(rnd == ONE) {

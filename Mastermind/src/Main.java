@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 import de.htwg.mastermind.controller.implementierung.MastermindController;
 import de.htwg.mastermind.model.implementierung.Field;
-import de.htwg.mastermind.model.implementierung.Solution;
 import de.htwg.mastermind.view.Tui;
 
 
