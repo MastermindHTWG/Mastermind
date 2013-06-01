@@ -47,20 +47,20 @@ public class Tui  implements Observer{
 		}
 		// if the command line has the form B, set the square color on position one to Black
 		if (next.matches("[RBOWGY]")) {
-			controller.playerSetColor(pat (next));
+			controller.setPlayerColor(pat (next));
 
 		}
 		// if the command line has the form RB, set the square color on position one to Red an pos two to Black
 		if (next.matches("[RBOWGY][RBOWGY]")) {
-			controller.playerSetColor(pat (next));
+			controller.setPlayerColor(pat (next));
 
 		}
 		if (next.matches("[RBOWGY][RBOWGY][RBOWGY]")) {
-			controller.playerSetColor(pat (next));
+			controller.setPlayerColor(pat (next));
 
 		}
 		if (next.matches("[RBOWGY][RBOWGY][RBOWGY][RBOWGY]")) {
-			controller.playerSetColor(pat (next));			
+			controller.setPlayerColor(pat (next));			
 		}
 		return true;
 		

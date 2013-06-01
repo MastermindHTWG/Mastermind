@@ -93,7 +93,7 @@ public class MastermindController extends Observable implements IMastermindContr
 		return gamefield.toString();
 	}
 
-	public void playerSetColor(char [] color) {
+	public void setPlayerColor(char [] color) {
 		gamefield.setGameRectangleColor(color);
 		notifyObservers();
 	}
@@ -169,4 +169,6 @@ public class MastermindController extends Observable implements IMastermindContr
 	public String getStatus() {
 		return statusLine;
 	}
+
+
 }

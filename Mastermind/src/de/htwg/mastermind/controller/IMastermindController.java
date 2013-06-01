@@ -5,13 +5,15 @@ public interface IMastermindController {
 	
 	char [] createSolution();
 	
-	String getGamfieldString();
+	void setSolution();
 	
-	void playerSetColor(char [] color);
+	void setPlayerColor(char [] color);
 	
 	void setBlackOrWith();
 	
 	void setVisibleSolution(boolean visible);
+		
+	void createField(int size);
 	
-	void setSolution();
+	String getGamfieldString();
 }
