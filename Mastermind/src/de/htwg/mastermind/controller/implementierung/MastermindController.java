@@ -14,7 +14,6 @@ public class MastermindController extends Observable implements IMastermindContr
 
 	private IField gamefield;	
 	private String statusLine;
-	private boolean win = false;
 	private static final int ONE = 1;
 	private static final int TWO = 2;
 	private static final int THREE = 3;
