@@ -34,28 +34,14 @@ public class Tui  implements Observer{
 	 */
 	public boolean input(String next) {
 		
+		playField(next);
 		if (next.equalsIgnoreCase("q")) {
 			return false;
 		}
 		if(next.equalsIgnoreCase("s")){
 			controller.setVisibleSolution(true);
 		}
-		if (next.equalsIgnoreCase("1")) {
-			size =ONE;			
-			controller.createField(ONE);
-		}
-		if(next.equalsIgnoreCase("2")) {
-			size = TWO;
-			controller.createField(TWO);
-		}
-		if(next.equalsIgnoreCase("3")) {
-			size = THREE;
-			controller.createField(THREE);
-		}
-		if(next.equalsIgnoreCase("4")) {
-			size = FOUR;
-			controller.createField(FOUR);
-		}
+		
 		if(next.equalsIgnoreCase("ok")) {
 			controller.setBlackOrWith();
 		}
@@ -78,6 +64,25 @@ public class Tui  implements Observer{
 		}
 		return true;
 		
+	}
+	
+	private void playField(String next) {
+		if (next.equalsIgnoreCase("1")) {
+			size =ONE;			
+			controller.createField(ONE);
+		}
+		if(next.equalsIgnoreCase("2")) {
+			size = TWO;
+			controller.createField(TWO);
+		}
+		if(next.equalsIgnoreCase("3")) {
+			size = THREE;
+			controller.createField(THREE);
+		}
+		if(next.equalsIgnoreCase("4")) {
+			size = FOUR;
+			controller.createField(FOUR);
+		}
 	}
 	
 	/*

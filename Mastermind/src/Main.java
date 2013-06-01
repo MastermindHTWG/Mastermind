@@ -21,14 +21,6 @@ public abstract class Main {
 	public static void main(String[] args) {
 		
 		
-		Solution two = new Solution(3);
-		two.setColor('B',0);
-		two.setColor('G',1);
-		two.setColor('R',2);	
-		two.setVisible(true);
-		System.out.println("+------------+\n|(B) (G) (R) |\n+------------+");
-		System.out.println(two);
-		
 		/*model*/
 		Field gamefield = new Field(FOUR); 
 		
