@@ -22,13 +22,7 @@ public class TUI  implements Observer{
 		this.controller = controller;
 		controller.addObserver(this);
 	}
-	/*
-	 * start selection
-	 */
-//	public void showTUI() {
-//		System.out.println("Welcome to Mastermind! Enjoy the game." +
-//				"Geben sie eine Zahl von 1-4 ein (groeﬂe des Spielfelds)."); 
-//	}
+
 	/*
 	 * @param next : entgegennamhe der eingabe
 	 */
@@ -47,21 +41,7 @@ public class TUI  implements Observer{
 		if(next.equalsIgnoreCase("n")) {
 			controller.createField();
 		}
-		// if the command line has the form B, set the square color on position one to Black
-//		if (next.matches("[RBOWGY]")) {
-//			controller.charToSquareAndSetForTUI(pat(next));
-//
-//		}
-//		// if the command line has the form RB, set the square color on position one to Red an pos two to Black
-//		if (next.matches("[RBOWGY][RBOWGY]")) {
-//			controller.charToSquareAndSetForTUI(pat (next));
-//
-//		}
-//		if (next.matches("[RBOWGY][RBOWGY][RBOWGY]")) {
-//			controller.charToSquareAndSetForTUI(pat (next));
-//
-//		}
-		if (next.matches("[RBOWGY][RBOWGY][RBOWGY][RBOWGY]")) {
+		if (next.matches("[RBOWGY][RBOWGY][RBOWGY][RBOWGY]")) { 
 			char [] c = pat(next);
 			controller.charToSquareAndSetForTUI(c);			
 		}
