@@ -2,10 +2,10 @@ package de.htwg.mastermind.controller.implementierung;
 
 import java.util.HashMap;
 import java.util.Map.Entry;
-
 import de.htwg.mastermind.controller.IMastermindController;
 import de.htwg.mastermind.model.IField;
 import de.htwg.mastermind.model.implementierung.Field;
+import de.htwg.mastermind.model.implementierung.Square;
 
 
 import de.htwg.mastermind.util.observer.Observable;
@@ -29,8 +29,8 @@ public class MastermindController extends Observable implements IMastermindContr
 	 * create a new Field to play
 	 * @param size size of the Field
 	 */
-	public void createField(int size) {
-		this.gamefield = new Field(size);
+	public void createField() {
+		this.gamefield = new Field(FOUR,SIX);
 		statusLine = "New Field was created";
 		this.setSolution();
 		notifyObservers();
@@ -44,48 +44,49 @@ public class MastermindController extends Observable implements IMastermindContr
 	public void setSolution() {
 				
 		int pos = 0;
-		char color [] = this.createSolution();		
+		Square color [] = this.createSolution();		
 		
-		for(char c: color ) {
+		for(Square c: color ) {
 			gamefield.setSolution(c, pos);
 			pos++;		
 		}
 	}
 	
-	public char [] getSolution() {
+	public Square [] getSolution() {
 		return gamefield.getSolution();
 	}
 	
-	public char [] createSolution() {
+	public Square [] createSolution() {
 		
-		char color[] = new char[gamefield.getSize()];
-				
+		Square color[] = new Square[gamefield.getSize()];
+	
 		for (int i = 0; i< gamefield.getSize();i++) {
+			color[i] = new Square();
 			int rnd = (int) (Math.random() * (SIX));
 			if (rnd == 0) {
-				color [i] = 'R';
+				color [i].setColor('R');
 			} else if(rnd == ONE) {
-				color [i] = 'B';
+				color [i].setColor('B');
 			} else if (rnd == TWO) {
-				color [i] = 'O'; 
+				color [i].setColor('O'); 
 			} else if (rnd == THREE) {
-				color[i] = 'W';
+				color[i].setColor('W');
 			} else if ( rnd == FOUR) {
-				color[i] = 'G';
+				color[i].setColor('G');
 			} else if( rnd == FIVE) {
-				color[i] = 'Y';
+				color[i].setColor('Y');
 			} else {
-				color[i] = '_';
+				color[i].setColor('_');
 			}
-		}
-		
+		}		
 		return color;
 	}
 	
 	
-	
 	public void setVisibleSolution(boolean visible) {
 		gamefield.setVisibleSolution(visible);
+		gamefield.setAktiv(gamefield.getHeight());
+		statusLine = "You Lose!!!!";
 		notifyObservers();
 	}
 	
@@ -96,27 +97,53 @@ public class MastermindController extends Observable implements IMastermindContr
 		return gamefield.toString();
 	}
 
-	public void setPlayerColor(char [] color) {
-		gamefield.setGameRectangleColor(color);
+	public void charToSquareAndSetForTUI(char [] color) {
+		int x = 0;
+		for(char c: color) {
+			this.setPlayerColor(c,x);
+			x++;
+		}
+	}
+	
+	//TODO
+	//Komponenten 
+	public void setPlayerColor(char color, int pos) {
+		Square sq = new Square();
+
+		sq.setColor(color);
+		if(gamefield.setGameRectangleColor(sq,pos)) {
+			statusLine = "Color: "+ color+" was set!";
+		} else {
+			statusLine = "Game ist over!";
+		}
+			
 		notifyObservers();
 	}
+	
 	/*
 	 * auswerten der Farbkombinationen die vom Spieler gesetzt wurden
 	 * und ueberpruefen ob der spieler gewonnen hat
 	 */
 	public void setBlackOrWith() {
-		char [] playerSetColor = gamefield.getGameRectangleColor();
-		char [] solutionColor = gamefield.getSolution();
+		Square [] playerSetColor = gamefield.getGameRectangleColor();
+		Square [] solutionColor = gamefield.getSolution();
 		int size = gamefield.getSize(),count = 0;
 		boolean whihteAvaliable = false;
+		
 		HashMap<Integer,Character> blackWhiteContainer = new HashMap<Integer,Character>();
+		
+		if(solutionColor == null || playerSetColor == null ) {
+			statusLine= "FAIL";
+			return;
+		}
+		
 		
 		for (int x = 0; x < size;x++) {
 			whihteAvaliable = false;
 			for(int y = 0; y < size;y++) {
 				
 				/*wenn farbe und positionen gleich ist*/
-				if (playerSetColor[x] == solutionColor[y]) {
+				if (playerSetColor[x].getColor() == solutionColor[y].getColor()) {
 					if(x == y) {
 						blackWhiteContainer.put(x, 'B');
 						break;
@@ -133,40 +160,47 @@ public class MastermindController extends Observable implements IMastermindContr
 		}		
 		for( Entry<Integer, Character> entry :blackWhiteContainer.entrySet()) {
 			if(entry.getValue() =='B') {
-				gamefield.setInformation('B', count);
+				Square sq = new Square();
+				sq.setColor('B');
+				gamefield.setInformation(sq, count);
 				count++;
 			}			
 		}
 		for( Entry<Integer, Character> entry :blackWhiteContainer.entrySet()) {
 			if(entry.getValue() == 'W') {
-				gamefield.setInformation('W', count);
+				Square sq = new Square();
+				sq.setColor('W');
+				gamefield.setInformation(sq, count);
 				count++;
 			}
 		}	
 		
-		this.checkWin();
+		if(!this.checkWin()) {
+			if(gamefield.getAktiv()+1 == gamefield.getHeight()) {				
+				gamefield.setVisibleSolution(true);
+				statusLine= "You lose!!!!!!!";
+			}
+		}
+			
 		/*if fuer ende der Spielrunde*/
 		gamefield.setAktiv(gamefield.getAktiv()+1);	
 		notifyObservers();
-		
-		
 	}
 	
 	
 	private boolean checkWin() {
-		char[] unit = gamefield.getInformation();
+		Square[] unit = gamefield.getInformation();
 		int size = gamefield.getSize();
 		for(int x = 0; x< size; x++) {
-			if(!(unit[x] == 'B')) {
+			if(!(unit[x].getColor() == 'B')) {
+				statusLine = "Noch einen Versuch";
 				return false;
 			}
 		}
-		statusLine = "You win, continue with yes.";
+		statusLine = "You win.";
 		return true;
 	}	
 	public String getStatus() {
 		return statusLine;
 	}
-
-
 }

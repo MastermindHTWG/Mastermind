@@ -1,27 +1,32 @@
 package de.htwg.mastermind.model;
 
+import de.htwg.mastermind.model.implementierung.Square;
+
 public interface IField {
 	
 	int getSize();
 	
-	void setSolution(char color, int pos);
+	int getHeight();
 	
-	char[] getSolution();
+	void setSolution(Square color, int pos);
 	
-	void setGameRectangleColor(char [] color);
+	Square[] getSolution();
 	
-	char[] getGameRectangleColor();
+	boolean setGameRectangleColor(Square color,int pos);
+	
+	Square[] getGameRectangleColor();
 	
 	boolean setAktiv(int pos);
 	
 	int getAktiv();
 	
-	void setInformation(char color, int pos);
+	void setInformation(Square color, int pos);
+	
+	Square[] getInformation();
 	
 	void setVisibleSolution(boolean visible);
-	
-	char [] getInformation();
 }
+	
 
 
 

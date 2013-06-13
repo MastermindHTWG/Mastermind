@@ -3,7 +3,7 @@ package de.htwg.mastermind.util.observer;
 
 import java.util.*;
 
-public class Observable  {
+public class Observable  implements IObservable{
 
 	private List<Observer> subscribers = new ArrayList<Observer>(2);
 

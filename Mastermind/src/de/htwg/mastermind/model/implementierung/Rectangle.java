@@ -32,13 +32,13 @@ public class Rectangle {
 	/*
 	 * @return color of the content
 	 */
-	public char[] getSquareColor(){
+	public Square[] getSquareColor(){
 		
-		char [] color = new char[unit.length];
+		Square [] color = new Square[unit.length];
 		int i = 0;
 		for(Square tmp: unit) {
 	
-			color[i] = tmp.getColor();
+			color[i] = tmp;
 			i++;
 		}
 		return  color;		
@@ -47,8 +47,8 @@ public class Rectangle {
 	 * @param color color for postion pos
 	 * @param pos position of color in the array unit
 	 */
-	public void setColor(char color, int pos) {
-		unit[pos].setColor(color); 
+	public void setColor(Square sq, int pos) {
+		unit[pos] = sq; 
 	}
 	
 

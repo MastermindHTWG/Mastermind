@@ -3,35 +3,34 @@ package de.htwg.mastermind.model.implementierung;
 import de.htwg.mastermind.model.IField;
 
 
+
 public class Field implements IField{
 
 	private Rectangle [] rec;
 	private GameRectangle [] game;
-	
+	int height = 1;
 	private int size = 1;
-	private boolean [] aktiv;
+	private int aktiv;
 
 	
 	public Field(){
-		this.aktiv = new boolean[1];
-		aktiv[0] = true;
-		this.game = new GameRectangle[size];
+		this.aktiv = 0;
+		this.game = new GameRectangle[1];
 		this.game[0] = new GameRectangle(size);
 		this.rec = new Rectangle[2];
 		this.rec[0] =  new ColorSelection();
-		this.rec[1] =new Solution(1);
-		
+		this.rec[1] =new Solution(1);	
 	}
 	
-	public Field(int size) {
+	public Field(int size,int height) {
+		this.height = height;
 		this.size = size;
-		this.game = new GameRectangle[size];
-		this.aktiv = new boolean[size];
-		this.aktiv[0] = true;
+		this.game = new GameRectangle[height];
+		this.aktiv = 0;
 		this.rec = new Rectangle[2];
 		this.rec[0] =  new ColorSelection();
 		this.rec[1] = new Solution(size);
-		for (int i = 0 ; i <size; i++) {
+		for (int i = 0 ; i <height; i++) {
 			this.game[i] = new GameRectangle(size);
 		}
 	}
@@ -43,6 +42,10 @@ public class Field implements IField{
 		return this.size;
 	}
 	
+	public int getHeight() {
+		return this.height;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -51,8 +54,8 @@ public class Field implements IField{
 		/*Solution*/
 		sb.append(this.rec[1].toString()).append(newLine);
 		/*GameRectangle*/
-		for(int i = size-1; i >= 0; i--)  {
-			sb.append(this.game[i].toString()).append(aktiv[i]).append(newLine);
+		for(int i = height-1; i >= 0; i--)  {
+			sb.append(this.game[i].toString()).append(aktiv).append(newLine);
 		}
 		/*ColorSelection*/
 		sb.append(this.rec[0]);
@@ -64,7 +67,7 @@ public class Field implements IField{
 	 *@param color color of one solution
 	 *qparam pos at postion pos
 	 */
-	public void setSolution(char color, int pos) {
+	public void setSolution(Square color, int pos) {
 		if(pos < size) {
 			this.rec[1].setColor(color, pos);			
 		}			
@@ -72,27 +75,35 @@ public class Field implements IField{
 	/*
 	 *@return char [] of solution
 	 */
-	public char[] getSolution() {
+	public Square[] getSolution() {
 		return rec[1].getSquareColor();
 	}
 	
 	/*
 	 *@ param color: set the player Color
 	 */
-	public void setGameRectangleColor(char [] color) {
-		int pos = 0,x = 0;
-		pos = this.getAktiv(); 
-		for(char tmp: color) {
-			game[pos].playerSetColor(tmp, x);
-			x++;
-		}		
+	public boolean setGameRectangleColor(Square color,int pos) {
+		int aktiv; 
+			if((aktiv = this.getAktiv()) == -1) {
+				return false;
+			} else {
+				game[aktiv].playerSetColor(color, pos);
+				return true;
+			}
+			
+		
 	}
 	/*
 	 *@ return char[] of color form Player
 	 */
-	public char[] getGameRectangleColor() {
+	public Square[] getGameRectangleColor() {
 		int pos = this.getAktiv(); 
-		return game[pos].getSetColor();
+		if(pos != -1) {
+			return game[pos].getSetColor();
+		} else {
+			return null;
+		}
+		
 	}
 
 	
@@ -103,35 +114,33 @@ public class Field implements IField{
 	 * true = spiel fertig
 	 */
 	public boolean setAktiv(int pos) {
-		if (pos < size) {
-			aktiv[pos-1] = false;
-			aktiv[pos] = true;
+		if(pos < this.height) {
+			this.aktiv = pos;
 			return true;
 		} else {
-			aktiv[size-1] = false;
+			this.aktiv = -1;
 			return false;
-		}			
+		}
+			
 	}
 	
 	/*
 	 * @return position of the active GameRectangle 
 	 */
 	public int getAktiv() {
-		int pos = 0;
-		for(int i = 0; i < size; i++ ) {
-			if (aktiv[i]) {
-				pos = i;
-			}				
-		}			
-		return pos;
+		return this.aktiv;
 	}
 	
 	/*
 	 *@ return Information as char []
 	 */
-	public char [] getInformation() {
+	public Square [] getInformation() {
 		int arrayPos = this.getAktiv();
-		return game[arrayPos].informationGetColor();
+		if(arrayPos != -1) {
+			return game[arrayPos].informationGetColor();
+		}
+		return null;
+		
 	}
 	
 	/*
@@ -140,7 +149,7 @@ public class Field implements IField{
 	 * @param color
 	 * @param pos position of the array in Information
 	 */
-	public void setInformation(char color, int pos) {
+	public void setInformation(Square color, int pos) {
 		int arrayPos = this.getAktiv();
 		game[arrayPos].informationSetColor(color, pos);	
 	}
@@ -152,6 +161,12 @@ public class Field implements IField{
 	public void setVisibleSolution(boolean visible) {
 		((Solution) rec[1]).setVisible(visible);
 	}
+
+
+
+
+
+
 	
 }
 

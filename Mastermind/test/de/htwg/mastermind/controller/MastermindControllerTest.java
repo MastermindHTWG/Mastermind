@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import de.htwg.mastermind.controller.implementierung.MastermindController;
 import de.htwg.mastermind.model.implementierung.Field;
+import de.htwg.mastermind.model.implementierung.Square;
 
 public class MastermindControllerTest {
 
@@ -17,17 +18,21 @@ public class MastermindControllerTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		field1 = new Field(1);
+		field1 = new Field(1,1);
 		controller1 = new MastermindController(field1);
-		field2 = new Field(1);
+		field2 = new Field(1,1);
 		controller2 = new MastermindController(field2);
 		
 	}
 
 	@Test
 	public void test() {
-		controller1.setPlayerColor(new char [] {'B'});
-		assertArrayEquals(field1.getGameRectangleColor(), new char [] {'B'});
+		Square sq = new Square();
+		sq.setColor('B');
+		controller1.setPlayerColor('B',0);
+		Square [] ret =field1.getGameRectangleColor();
+		
+		assertEquals(ret[0].getColor(), sq.getColor() );
 	}
 	
 	@Test
@@ -38,20 +43,43 @@ public class MastermindControllerTest {
 	@Test
 	public void solutionTest() {
 		String newLine = System.getProperty("line.separator");
-		controller2.createField(1);
-		char [] sol = controller2.getSolution();
-		controller2.setPlayerColor(sol);
+		controller2.createSolution();
+		Square[] sol = controller2.getSolution();
+		controller2.setPlayerColor(sol[0].getColor(),0);
 		controller2.setBlackOrWith();
 		controller2.setVisibleSolution(true);
-		assertEquals("+----+"+ newLine + "|(" + sol[0] +") |"+newLine+"+----+"+newLine+
-				"+----++----+"+newLine+ "|(B) ||("+sol[0]+") |"+newLine+"+----++----+false"+
+		assertEquals("+----+"+ newLine + "|(" + sol[0].getColor() +") |"+newLine+"+----+"+newLine+
+				"+----++----+"+newLine+ "|(B) ||("+sol[0].getColor()+") |"+newLine+"+----++----+-1"+
 				newLine+ "+------------------------+"+newLine+ "|(R) (B) (O) (W) (G) (Y) |"+
 				newLine+"+------------------------+",controller2.getGamfieldString());
 	}
 
+	@Test
+	public void createField(){
+		MastermindController conOne = new MastermindController(null);
+		MastermindController conTwo = new MastermindController(null);
+		conOne.createField();
+		conTwo.createField();
+		assertEquals(conOne.getGamfieldString(), conTwo.getGamfieldString());
+	}
 	
+	@Test
+	public void chatToSquareTest(){
+		MastermindController conOne = new MastermindController(null);
+		MastermindController conTwo = new MastermindController(null);
+		conOne.createField();
+		conTwo.createField();
+		conOne.charToSquareAndSetForTUI(new char [] {'A'});
+		conTwo.charToSquareAndSetForTUI(new char [] {'A'});
+		assertEquals(conOne.getGamfieldString(), conTwo.getGamfieldString());
+	}
 	
-	
+	@Test
+	public void getStatusTest(){
+		MastermindController conOne = new MastermindController(null);
+		MastermindController conTwo = new MastermindController(null);
+		assertEquals(conOne.getStatus(), conTwo.getStatus());
+	}
 	
 	
 	

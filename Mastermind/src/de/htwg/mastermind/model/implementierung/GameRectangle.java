@@ -30,15 +30,15 @@ public class GameRectangle {
 	 * @param color give color to playerSetColor
 	 * @param pos give pos to playerSetColor
 	 */
-	public void playerSetColor(char color,int pos) {
-		psc.setColor(color, pos); 
+	public void playerSetColor(Square sq,int pos) {
+		psc.setColor(sq, pos); 
 	}
 	
 	
 	/*
 	 * @retrun char [] from set color by player
 	 */
-	public char[] getSetColor() {
+	public Square[] getSetColor() {
 		return psc.getSquareColor();
 	}
 	
@@ -47,19 +47,15 @@ public class GameRectangle {
 	 * @param color color on postion pos
 	 * @param pos postion on array
 	 */
-	public void informationSetColor(char color,int pos) {
-		info.setColor(color, pos);
+	public void informationSetColor(Square sq,int pos) {
+		info.setColor(sq, pos);
 	}
 	
 	
 	/*
 	 * @return return char [] of information Color
 	 */
-	public char [] informationGetColor() {
+	public Square [] informationGetColor() {
 		return info.getSquareColor();
 	}
-
-	
-	
-	
 }

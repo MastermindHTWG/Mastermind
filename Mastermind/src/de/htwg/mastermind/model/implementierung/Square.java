@@ -1,7 +1,9 @@
 package de.htwg.mastermind.model.implementierung;
 
+import de.htwg.mastermind.model.ISquare;
 
-public class Square {
+
+public class Square implements ISquare{
 
 	private char color;
 	

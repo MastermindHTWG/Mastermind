@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.htwg.mastermind.model.implementierung.Field;
+import de.htwg.mastermind.model.implementierung.Square;
 
 public class FieldTest {
 
@@ -14,14 +15,16 @@ public class FieldTest {
 	Field three;
 	Field four;
 	Field six;
-	
+	Square sq;
 	@Before
 	public void setUp() {
 		one = new Field();
 		two = new Field();
-		three = new Field(1);
-		four  = new Field(1);
-		six = new Field(2);
+		three = new Field(1,5);
+		four  = new Field(1,5);
+		six = new Field(1,5);
+		sq = new Square();
+		sq.setColor('R');
 	}
 	
 	
@@ -41,31 +44,30 @@ public class FieldTest {
 	}
 	@Test
 	public void setGetAktivTest() {
-		six.setAktiv(1);
-		assertEquals(six.getAktiv(),1);
+		six.setAktiv(2);
+		assertEquals(six.getAktiv(),2);
 	}
 	@Test
 	public void setGetGameRectangleColorTest() {
-		one.setGameRectangleColor(new char [] {'R'});
-		assertArrayEquals(new char [] {'R'}, one.getGameRectangleColor());
+		one.setGameRectangleColor(sq,0);
+		
+		Square [] ret = one.getGameRectangleColor();
+		assertEquals(ret[0].getColor(),sq.getColor());
 	}
 	@Test
 	public void setGetSolution() {
-		one.setSolution('R', 0);
-		assertArrayEquals(new char [] {'R'}, one.getSolution());
+		
+		one.setSolution(sq, 0);
+		Square [] ret = one.getSolution();
+		assertEquals(sq.getColor(),ret[0].getColor());
 	}
 	
 	@Test
 	public void setGetInformationTest() {
-		one.setInformation('B', 0);
-		char [] tmp = one.getInformation();
-		assertTrue(tmp[0] == 'B');
-	}
-	
-	
-	@Test
-	public void setAktiv() {
-		assertFalse(one.setAktiv(2));
+		sq.setColor('B');
+		one.setInformation(sq, 0);
+		Square [] tmp = one.getInformation();
+		assertTrue(tmp[0].getColor() == 'B');
 	}
 	
 }

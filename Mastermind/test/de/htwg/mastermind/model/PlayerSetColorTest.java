@@ -6,22 +6,26 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.htwg.mastermind.model.implementierung.PlayerSetColor;
+import de.htwg.mastermind.model.implementierung.Square;
 
 public class PlayerSetColorTest {
 
 	PlayerSetColor one;
+	Square sq;
 	@Before
 	public void setUp() throws Exception {
-		one = new PlayerSetColor(4);
+		one = new PlayerSetColor(1);
+		sq = new Square();
+		
 	}
 
 	@Test
 	public void getSquareColorTestEquals() {
-		one.setColor('R',0);
-		one.setColor('R',1);
-		one.setColor('R',2);
-		one.setColor('R',3);
+		sq.setColor('R');
+		one.setColor(sq,0);
+		Square [] sqarr = one.getSquareColor();
+
 		
-		assertArrayEquals(new char [] {'R','R','R','R'},one.getSquareColor());		
+		assertEquals(sq.getColor(),sqarr[0].getColor());		
 	}
 }

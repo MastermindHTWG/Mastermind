@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.htwg.mastermind.model.implementierung.ColorSelection;
+import de.htwg.mastermind.model.implementierung.Square;
 
 public class ColorSelectionTest {
 
@@ -18,8 +19,13 @@ public class ColorSelectionTest {
 
 	@Test
 	public void test() {
-		assertArrayEquals( new char[] {'R','B','O', 'W','G', 'Y'},one.getSquareColor());
-
+		Square [] tmp = one.getSquareColor();
+		assertEquals( 'R',tmp[0].getColor());
+		assertEquals( 'B',tmp[1].getColor());
+		assertEquals( 'O',tmp[2].getColor());
+		assertEquals( 'W',tmp[3].getColor());
+		assertEquals( 'G',tmp[4].getColor());
+		assertEquals( 'Y',tmp[5].getColor());
 	}
 
 
