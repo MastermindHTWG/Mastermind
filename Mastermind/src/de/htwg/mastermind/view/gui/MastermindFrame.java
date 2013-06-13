@@ -19,8 +19,8 @@ public class MastermindFrame extends JFrame implements Observer{
 	private StatusPanel statusPanel;
 	private StatusPanel statusPanelOne;
 	
-	PlayerFieldPanel playerField;
-	InformationFiledPanel statusField;
+	private PlayerFieldPanel playerField;
+	private InformationFiledPanel statusField;
 	
 	public MastermindFrame(IMastermindController controller) {
 		this.controller = controller;

@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 
 import de.htwg.mastermind.controller.IMastermindController;
-import de.htwg.mastermind.model.implementierung.Square;
+import de.htwg.mastermind.controller.implementierung.MastermindController;
 
 public class SquarePanel extends JPanel {
 
@@ -16,7 +16,7 @@ public class SquarePanel extends JPanel {
 	private IMastermindController controller;
 	private final boolean listen;
 	
-	Color color = new Color(100, 100, 255);
+	private Color color = new Color(100, 100, 255);
 
 	public SquarePanel(final IMastermindController controller, final int pos, boolean listen) {
 		this.pos = pos;
@@ -24,9 +24,10 @@ public class SquarePanel extends JPanel {
 		this.listen = listen;
 
 		
-		if(listen) {
+		if(this.listen) {
 			addMouseListener(new MouseListener() {
 
+		
 				@Override
 				public void mouseReleased(MouseEvent e) {
 				}
@@ -46,15 +47,14 @@ public class SquarePanel extends JPanel {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					setColor(Color.RED);
-					controller.setPlayerColor('R', pos);
-					
-					
+					controller.setPlayerColor('R',pos);
 				}
 			});
 		}
 
 		
 	}
+
 
 	@Override
 	public void paintComponent(Graphics g) {

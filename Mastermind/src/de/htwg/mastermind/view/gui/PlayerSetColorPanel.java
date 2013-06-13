@@ -24,7 +24,7 @@ public class PlayerSetColorPanel extends JPanel {
 		
 		int i = 0;
 		for(SquarePanel t : sq) {
-			t = new SquarePanel(this.controller, i,true);
+			t = new SquarePanel(this.controller, i,true); 
 			add(t);
 			i++;
 		}	

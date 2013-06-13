@@ -8,7 +8,7 @@ public class Field implements IField{
 
 	private Rectangle [] rec;
 	private GameRectangle [] game;
-	int height = 1;
+	private int height = 1;
 	private int size = 1;
 	private int aktiv;
 
@@ -83,8 +83,8 @@ public class Field implements IField{
 	 *@ param color: set the player Color
 	 */
 	public boolean setGameRectangleColor(Square color,int pos) {
-		int aktiv; 
-			if((aktiv = this.getAktiv()) == -1) {
+		int aktiv = this.getAktiv();
+			if(aktiv == -1) {
 				return false;
 			} else {
 				game[aktiv].playerSetColor(color, pos);

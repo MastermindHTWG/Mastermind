@@ -15,7 +15,7 @@ public class PlayerFieldPanel extends JPanel{
 	private IMastermindController controller;
 	private int size;
 	private int height;
-	PlayerSetColorPanel [] player;
+	private PlayerSetColorPanel [] player;
 	
 	public PlayerFieldPanel(IMastermindController controller,int size,int height){
 		this.size = size;
@@ -30,9 +30,5 @@ public class PlayerFieldPanel extends JPanel{
 		}
 		
 		
-	}
-	
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
 	}
 }

@@ -37,7 +37,7 @@ public class StatusPanel extends JPanel{
 		
 		add(buttonSolve);
 		
-		JButton buttonOk =new JButton(OK);
+		JButton buttonOk =new JButton(OK); 
 		buttonOk.addActionListener(new ActionListener() {
 			
 			@Override

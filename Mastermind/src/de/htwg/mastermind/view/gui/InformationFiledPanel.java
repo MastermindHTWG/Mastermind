@@ -16,7 +16,7 @@ public class InformationFiledPanel extends JPanel{
 	private IMastermindController controller;
 	private int size;
 	private int height;
-	InformationPanel [] info;
+	private InformationPanel [] info;
 	
 	
 	public InformationFiledPanel(IMastermindController controller,int size, int height){
@@ -33,11 +33,6 @@ public class InformationFiledPanel extends JPanel{
 		
 		
 	}
-	
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-	}
-	
 }
 
 

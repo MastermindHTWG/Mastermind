@@ -11,11 +11,6 @@ import de.htwg.mastermind.util.observer.Observer;
 
 public class TUI  implements Observer{
 	
-	private static final int ONE = 1;
-	private static final int TWO = 2;
-	private static final int THREE = 3;
-	private static final int FOUR = 4;
-
 	private IMastermindController controller;
 	
 	public TUI(IMastermindController controller) {
