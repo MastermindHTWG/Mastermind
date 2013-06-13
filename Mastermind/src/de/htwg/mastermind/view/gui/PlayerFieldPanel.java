@@ -1,6 +1,6 @@
 package de.htwg.mastermind.view.gui;
 
-import java.awt.Graphics;
+
 import java.awt.GridLayout;
 
 

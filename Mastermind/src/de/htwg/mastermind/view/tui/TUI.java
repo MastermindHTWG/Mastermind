@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 
 import de.htwg.mastermind.controller.IMastermindController;
-import de.htwg.mastermind.controller.implementierung.MastermindController;
 import de.htwg.mastermind.util.observer.Observer;
 
 

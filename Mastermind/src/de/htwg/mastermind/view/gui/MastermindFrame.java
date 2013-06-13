@@ -20,7 +20,7 @@ public class MastermindFrame extends JFrame implements Observer{
 	private StatusPanel statusPanelOne;
 	
 	private PlayerFieldPanel playerField;
-	private InformationFiledPanel statusField;
+	private InformationFieldPanel statusField;
 	
 	public MastermindFrame(IMastermindController controller) {
 		this.controller = controller;
@@ -44,7 +44,7 @@ public class MastermindFrame extends JFrame implements Observer{
 		statusPanel.setText("Hallo");
 		
 		playerField = new PlayerFieldPanel(controller, 4,4);
-		statusField = new InformationFiledPanel(controller, 4,4);
+		statusField = new InformationFieldPanel(controller, 4,4);
 		
 		statusPanelOne = new StatusPanel(controller);
 		add(statusPanelOne,BorderLayout.NORTH);

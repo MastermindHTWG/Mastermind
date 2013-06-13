@@ -1,7 +1,6 @@
 package de.htwg.mastermind.view.gui;
 
 
-import java.awt.Graphics;
 import java.awt.GridLayout;
 
 
@@ -10,7 +9,7 @@ import javax.swing.JPanel;
 import de.htwg.mastermind.controller.IMastermindController;
 
 
-public class InformationFiledPanel extends JPanel{
+public class InformationFieldPanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	private IMastermindController controller;
@@ -19,7 +18,7 @@ public class InformationFiledPanel extends JPanel{
 	private InformationPanel [] info;
 	
 	
-	public InformationFiledPanel(IMastermindController controller,int size, int height){
+	public InformationFieldPanel(IMastermindController controller,int size, int height){
 		this.height = height;
 		this.size = size;
 		this.controller = controller;

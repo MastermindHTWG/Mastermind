@@ -84,11 +84,11 @@ public class Field implements IField{
 	 */
 	public boolean setGameRectangleColor(Square color,int pos) {
 		int aktiv = this.getAktiv();
-			if(aktiv == -1) {
-				return false;
-			} else {
+			if(aktiv != -1) {
 				game[aktiv].playerSetColor(color, pos);
 				return true;
+			} else {
+				return false;
 			}
 			
 		

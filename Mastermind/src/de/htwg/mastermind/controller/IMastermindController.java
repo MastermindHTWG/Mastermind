@@ -10,7 +10,7 @@ public interface IMastermindController extends IObservable{
 	
 	void setSolution();
 	
-	public void setPlayerColor(char color, int pos);
+	void setPlayerColor(char color, int pos);
 	
 	void setBlackOrWith();
 	

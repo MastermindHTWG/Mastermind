@@ -8,7 +8,6 @@ import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 
 import de.htwg.mastermind.controller.IMastermindController;
-import de.htwg.mastermind.controller.implementierung.MastermindController;
 
 public class SquarePanel extends JPanel {
 
