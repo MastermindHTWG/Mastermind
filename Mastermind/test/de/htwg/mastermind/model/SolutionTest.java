@@ -33,7 +33,10 @@ public class SolutionTest {
 		two.setVisible(true);
 		String newLine = System.getProperty("line.separator");
 		assertEquals("+----+"+newLine+"|(B) |"+newLine+"+----+",two.toString());
+		assertTrue(two.getVisible());
 	}
+	
+	
 	
 }
 

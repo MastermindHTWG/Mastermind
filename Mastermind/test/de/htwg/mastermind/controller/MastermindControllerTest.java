@@ -2,6 +2,8 @@ package de.htwg.mastermind.controller;
 
 import static org.junit.Assert.*;
 
+import java.awt.Color;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -81,11 +83,86 @@ public class MastermindControllerTest {
 		assertEquals(conOne.getStatus(), conTwo.getStatus());
 	}
 	
+	@Test
+	public void clickTest(){
+		MastermindController conOne = new MastermindController(new Field());
+		int [] ar = conOne.getClick();
+		assertEquals(ar[0], 0);
+	}
+	@Test
+	public void nor(){
+		MastermindController conOne = new MastermindController(new Field());
+		Color [][] col = conOne.getInfoColor();
+		assertEquals(col[0][0], new Color(188,210,238));
+	}
+	@Test
+	public void Red(){
+		MastermindController conOne = new MastermindController(new Field());
+		conOne.setPlayerColor('R', 0, 0);
+		Color [][] col = conOne.getPlayerColor();
+		assertEquals(col[0][0], Color.RED);
+	}
+	@Test
+	public void Orange(){
+		MastermindController conOne = new MastermindController(new Field());
+		conOne.setPlayerColor('O', 0, 0);
+		Color [][] col = conOne.getPlayerColor();
+		assertEquals(col[0][0], Color.ORANGE);
+	}
+	@Test
+	public void W(){
+		MastermindController conOne = new MastermindController(new Field());
+		conOne.setPlayerColor('W', 0, 0);
+		Color [][] col = conOne.getPlayerColor();
+		assertEquals(col[0][0], Color.WHITE);
+	}
+	@Test
+	public void G(){
+		MastermindController conOne = new MastermindController(new Field());
+		conOne.setPlayerColor('G', 0, 0);
+		Color [][] col = conOne.getPlayerColor();
+		assertEquals(col[0][0], Color.GREEN);
+	}
+	@Test
+	public void P(){
+		MastermindController conOne = new MastermindController(new Field());
+		conOne.setPlayerColor('P', 0, 0);
+		Color [][] col = conOne.getPlayerColor();
+		assertEquals(col[0][0], Color.PINK);
+	}
+	@Test
+	public void Gray(){
+		MastermindController conOne = new MastermindController(new Field());
+		conOne.setPlayerColor(' ', 0, 0);
+		Color [][] col = conOne.getPlayerColor();
+		assertEquals(col[0][0], Color.GRAY);
+	}
+	@Test
+	public void B(){
+		MastermindController conOne = new MastermindController(new Field());
+		conOne.setPlayerColor('B', 0, 0);
+		Color [][] col = conOne.getPlayerColor();
+		assertEquals(col[0][0], Color.BLUE);
+	}
 	
 	
-	
-	
-	
+	@Test
+	public void getSolutionTest(){
+		MastermindController conOne = new MastermindController(new Field());
+		conOne.setSolution();
+		Square [] sq = conOne.getSolution();
+		Color[] c = conOne.getSolutionColor();
+	}
+	@Test
+	public void getHeightTest() {
+		MastermindController conOne = new MastermindController(new Field());
+		assertEquals(conOne.getHeight(), 1);
+	}
+	@Test
+	public void getSizeTest() {
+		MastermindController conOne = new MastermindController(new Field());
+		assertEquals(conOne.getSize(), 1);
+	}
 	
 	
 }

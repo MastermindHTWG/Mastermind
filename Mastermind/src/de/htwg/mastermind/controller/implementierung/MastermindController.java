@@ -179,8 +179,8 @@ public class MastermindController extends Observable implements IMastermindContr
 				colorPlayer[gamefield.getAktiv()][i] = Color.WHITE;
 			} else if(s.getColor() == 'G') {
 				colorPlayer[gamefield.getAktiv()][i] = Color.GREEN;
-			} else if(s.getColor() == 'Y') {
-				colorPlayer[gamefield.getAktiv()][i] = Color.YELLOW;
+			} else if(s.getColor() == 'P') {
+				colorPlayer[gamefield.getAktiv()][i] = Color.PINK;
 			} else {
 				colorPlayer[gamefield.getAktiv()][i] = Color.GRAY;
 			}
@@ -208,8 +208,8 @@ public class MastermindController extends Observable implements IMastermindContr
 				colorSolution[i] = Color.WHITE;
 			} else if(s.getColor() == 'G') {
 				colorSolution[i] = Color.GREEN;
-			} else if(s.getColor() == 'Y') {
-				colorSolution[i] = Color.YELLOW;
+			} else if(s.getColor() == 'P') {
+				colorSolution[i] = Color.PINK;
 			}
 			i++;
 		}

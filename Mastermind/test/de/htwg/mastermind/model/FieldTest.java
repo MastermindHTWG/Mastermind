@@ -70,4 +70,10 @@ public class FieldTest {
 		assertTrue(tmp[0].getColor() == 'B');
 	}
 	
+	@Test
+	public void visibleTest(){
+		one.setVisibleSolution(true);
+		assertTrue(one.getVisibleSolution());
+	}
+	
 }
