@@ -52,7 +52,7 @@ public class MastermindFrame extends JFrame implements Observer{
 		}
 		statusPanel = new StatusPanel(this.controller);
 		add(statusPanel,BorderLayout.SOUTH);
-		statusPanel.setText("Hallo");
+		statusPanel.setText(controller.getStatus());
 		
 		
 		

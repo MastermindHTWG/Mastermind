@@ -16,6 +16,7 @@ public class StatusPanel extends JPanel{
 
 	private static final String OK = "OK";
 	private static final String SOLVE = "solve";
+	private static final String NEWGAME = "new Game";
 	private static final long serialVersionUID = 1L;
 	private final JLabel statusLabel = new JLabel("");
 	
@@ -48,6 +49,19 @@ public class StatusPanel extends JPanel{
 		});
 		
 		add(buttonOk);
+		
+		JButton newGame = new JButton(NEWGAME);
+		
+		newGame.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+	
+				controller.createField();
+				
+			}
+		});
+		add(newGame);
 		
 	}
 	
