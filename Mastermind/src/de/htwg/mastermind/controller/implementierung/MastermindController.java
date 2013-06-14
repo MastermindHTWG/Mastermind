@@ -1,5 +1,6 @@
 package de.htwg.mastermind.controller.implementierung;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import de.htwg.mastermind.controller.IMastermindController;
@@ -20,9 +21,17 @@ public class MastermindController extends Observable implements IMastermindContr
 	private static final int FOUR = 4;
 	private static final int FIVE = 5;
 	private static final int SIX = 6;
+	private int [] click;
+	private Color [][] colorPlayer;
+	private Color [][] colorInfo;
+	private Color [] colorSolution;
 	
 	public MastermindController(IField gamefield) {  
 		this.gamefield = gamefield;
+		this.click = new int [gamefield.getSize()];
+		this.colorPlayer = new Color[gamefield.getHeight()][gamefield.getSize()];
+		this.colorInfo = new Color[gamefield.getHeight()][gamefield.getSize()];
+		this.colorSolution = new Color[gamefield.getSize()];
 	}
 	
 	/*
@@ -33,6 +42,10 @@ public class MastermindController extends Observable implements IMastermindContr
 		this.gamefield = new Field(FOUR,SIX);
 		statusLine = "New Field was created";
 		this.setSolution();
+		this.click = new int [gamefield.getSize()];
+		this.colorPlayer = new Color[gamefield.getHeight()][gamefield.getSize()];
+		this.colorInfo = new Color[gamefield.getHeight()][gamefield.getSize()];
+		this.colorSolution = new Color[gamefield.getSize()];
 		notifyObservers();
 	}
 	
@@ -100,25 +113,116 @@ public class MastermindController extends Observable implements IMastermindContr
 	public void charToSquareAndSetForTUI(char [] color) {
 		int x = 0;
 		for(char c: color) {
-			this.setPlayerColor(c,x);
+			this.setPlayerColor(c,x,0);
 			x++;
 		}
 	}
 	
 	//TODO
 	//Komponenten 
-	public void setPlayerColor(char color, int pos) {
+	public void setPlayerColor(char color, int pos, int click) {
 		Square sq = new Square();
-
+		this.click[pos] =click;
 		sq.setColor(color);
 		if(gamefield.setGameRectangleColor(sq,pos)) {
 			statusLine = "Color: "+ color+" was set!";
 		} else {
-			statusLine = "Game ist over!";
+			statusLine = "Game is over!";
 		}
 			
 		notifyObservers();
 	}
+	public int [] getClick() {
+		return this.click;
+	}
+	
+	public Color [][] getInfoColor(){
+		Square [] getInfo = gamefield.getInformation();
+		if(getInfo == null)
+			return colorInfo;
+		
+	
+		
+		
+		for(Square c: getInfo) {
+			System.out.println(c.getColor());
+		}
+		
+		int i = 0;
+		for(Square s: getInfo) {
+			if(s.getColor() == 'B') {
+				System.out.println("BLACK");
+				colorInfo[gamefield.getAktiv()][i] = Color.BLACK;
+			} else if(s.getColor() == 'W') {
+				System.out.println("WHITE");
+				colorInfo[gamefield.getAktiv()][i] = Color.WHITE;
+			} else if(s.getColor() == '_') {
+				colorInfo[gamefield.getAktiv()][i] = new Color(188,210,238);
+			} 
+			i++;
+		}
+		return colorInfo;
+		
+	}
+	
+	
+	public Color [][] getPlayerColor(){
+		Square [] getCol =	gamefield.getGameRectangleColor();
+		 
+		if(getCol== null)
+			return colorPlayer;
+		
+		int i = 0;
+		for(Square s: getCol) {
+			if(s.getColor() == 'R') {
+				colorPlayer[gamefield.getAktiv()][i] = Color.RED;
+			} else if(s.getColor() == 'B') {
+				colorPlayer[gamefield.getAktiv()][i] = Color.BLUE;
+			} else if(s.getColor() == 'O') {
+				colorPlayer[gamefield.getAktiv()][i] = Color.ORANGE;
+			} else if(s.getColor() == 'W') {
+				colorPlayer[gamefield.getAktiv()][i] = Color.WHITE;
+			} else if(s.getColor() == 'G') {
+				colorPlayer[gamefield.getAktiv()][i] = Color.GREEN;
+			} else if(s.getColor() == 'Y') {
+				colorPlayer[gamefield.getAktiv()][i] = Color.YELLOW;
+			} else {
+				colorPlayer[gamefield.getAktiv()][i] = Color.GRAY;
+			}
+			i++;
+		}
+		
+		return colorPlayer;
+	}
+	public Color [] getSolutionColor(){
+		Square [] getCol =	gamefield.getSolution();
+		
+		
+		int i = 0;
+		for(Square s: getCol) {
+			if(!gamefield.getVisibleSolution()){
+				colorSolution[i] = Color.GRAY;
+			}
+			else if(s.getColor() == 'R') {
+				colorSolution[i] = Color.RED;
+			} else if(s.getColor() == 'B') {
+				colorSolution[i] = Color.BLUE;
+			} else if(s.getColor() == 'O') {
+				colorSolution[i] = Color.ORANGE;
+			} else if(s.getColor() == 'W') {
+				colorSolution[i] = Color.WHITE;
+			} else if(s.getColor() == 'G') {
+				colorSolution[i] = Color.GREEN;
+			} else if(s.getColor() == 'Y') {
+				colorSolution[i] = Color.YELLOW;
+			}
+			i++;
+		}
+		
+		return colorSolution;
+	}
+	
+	
 	
 	/*
 	 * auswerten der Farbkombinationen die vom Spieler gesetzt wurden
@@ -183,13 +287,15 @@ public class MastermindController extends Observable implements IMastermindContr
 		}
 			
 		/*if fuer ende der Spielrunde*/
+		
+		notifyObservers();
 		gamefield.setAktiv(gamefield.getAktiv()+1);	
 		notifyObservers();
 	}
 	
 	
 	private boolean checkWin() {
-		Square[] unit = gamefield.getInformation();
+		Square[] unit = gamefield.getInformation(); 
 		int size = gamefield.getSize();
 		for(int x = 0; x< size; x++) {
 			if(!(unit[x].getColor() == 'B')) {

@@ -5,9 +5,6 @@ import de.htwg.mastermind.model.implementierung.Field;
 import de.htwg.mastermind.view.gui.MastermindFrame;
 import de.htwg.mastermind.view.tui.TUI;
 
-
-
-
 public abstract class Main { 
 
 	private static final int FOUR = 4;
@@ -22,14 +19,14 @@ public abstract class Main {
 		
 		/*controller*/
 		MastermindController controller = new MastermindController(gamefield);
-				
+		
 		MastermindFrame gui = new MastermindFrame(controller);
 		
 		/*view*/
 		TUI tui = new TUI(controller);
 		
 		/*main menue*/
-		controller.createField();
+		controller.createField();	
 		
 		scanner = new Scanner(System.in);
 

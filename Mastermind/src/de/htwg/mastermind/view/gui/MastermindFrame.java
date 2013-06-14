@@ -17,20 +17,23 @@ public class MastermindFrame extends JFrame implements Observer{
 	
 	private IMastermindController controller;
 	private StatusPanel statusPanel;
-	private StatusPanel statusPanelOne;
+//	private StatusPanel statusPanelOne;
 	
-	private PlayerFieldPanel playerField;
-	private InformationFieldPanel statusField;
+	private PlayerField playerField;
+	private InformationField statusField;
+	private JPanel panel;
+	private SolutionPanel solutionPanel;
 	
 	public MastermindFrame(IMastermindController controller) {
 		this.controller = controller;
-		controller.addObserver(this);
+		this.panel = new JPanel( new GridLayout(1,3));
+		this.solutionPanel = new SolutionPanel(this.controller, 4);
 		
 		setTitle("HTWG Mastermind");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(DEFAULT_X, DEFAULT_Y);
 		
-		
+		controller.addObserver(this);
 
 		
 		constructMastermindPane();
@@ -38,25 +41,38 @@ public class MastermindFrame extends JFrame implements Observer{
 
 
 	private final void constructMastermindPane() {
-		
+		 
+		if(statusPanel != null) {
+			remove(statusPanel);
+		}
 		statusPanel = new StatusPanel(this.controller);
 		add(statusPanel,BorderLayout.SOUTH);
 		statusPanel.setText("Hallo");
 		
-		playerField = new PlayerFieldPanel(controller, 4,4);
-		statusField = new InformationFieldPanel(controller, 4,4);
-		
-		statusPanelOne = new StatusPanel(controller);
-		add(statusPanelOne,BorderLayout.NORTH);
-		statusPanelOne.setText("Winer");
 		
 		
-		
-		
-		JPanel panel = new JPanel( new GridLayout(1,2));
-		
+		if(statusField != null) {
+			panel.remove(statusField);
+		}
+		statusField = new InformationField(controller, 4,6,controller.getInfoColor());
 		panel.add(statusField);
+		
+		if(playerField != null) {
+			panel.remove(playerField);
+		}		
+		playerField = new PlayerField(controller, 4,6, controller.getPlayerColor(),controller.getClick());
 		panel.add(playerField);
+		
+		
+		
+		if(solutionPanel != null ) {
+			remove(solutionPanel);
+		}
+		solutionPanel = new SolutionPanel(this.controller, 4);
+		add(solutionPanel,BorderLayout.NORTH);
+
+		
+		
 		
 		add(panel, BorderLayout.CENTER);
 		
@@ -68,7 +84,8 @@ public class MastermindFrame extends JFrame implements Observer{
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		constructMastermindPane();
+		repaint();
 		
 	}
 	

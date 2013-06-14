@@ -29,7 +29,7 @@ public class MastermindControllerTest {
 	public void test() {
 		Square sq = new Square();
 		sq.setColor('B');
-		controller1.setPlayerColor('B',0);
+		controller1.setPlayerColor('B',0,0);
 		Square [] ret =field1.getGameRectangleColor();
 		
 		assertEquals(ret[0].getColor(), sq.getColor() );
@@ -45,7 +45,7 @@ public class MastermindControllerTest {
 		String newLine = System.getProperty("line.separator");
 		controller2.createSolution();
 		Square[] sol = controller2.getSolution();
-		controller2.setPlayerColor(sol[0].getColor(),0);
+		controller2.setPlayerColor(sol[0].getColor(),0,0);
 		controller2.setBlackOrWith();
 		controller2.setVisibleSolution(true);
 		assertEquals("+----+"+ newLine + "|(" + sol[0].getColor() +") |"+newLine+"+----+"+newLine+

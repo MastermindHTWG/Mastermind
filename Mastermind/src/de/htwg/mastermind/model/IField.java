@@ -25,6 +25,9 @@ public interface IField {
 	Square[] getInformation();
 	
 	void setVisibleSolution(boolean visible);
+	
+	boolean getVisibleSolution();
+
 }
 	
 

@@ -143,6 +143,16 @@ public class Field implements IField{
 		
 	}
 	
+	public Square [] getPrevInformation() {
+		int arrayPos = this.getAktiv();
+		if(arrayPos != -1) {
+		
+			return game[0].informationGetColor();
+		}
+		return null;
+		
+	}
+	
 	/*
 	 * set the Informations white or black if the color in 
 	 * PlayerSetColor is right (position)
@@ -161,11 +171,10 @@ public class Field implements IField{
 	public void setVisibleSolution(boolean visible) {
 		((Solution) rec[1]).setVisible(visible);
 	}
-
-
-
-
-
+	
+	public boolean getVisibleSolution(){
+		return  ((Solution)rec[1]).getVisible();
+	}
 
 	
 }
