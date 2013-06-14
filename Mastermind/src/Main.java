@@ -1,6 +1,11 @@
 import java.util.Scanner;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
+import de.htwg.mastermind.controller.IMastermindController;
 import de.htwg.mastermind.controller.implementierung.MastermindController;
+import de.htwg.mastermind.model.IField;
 import de.htwg.mastermind.model.implementierung.Field;
 import de.htwg.mastermind.view.gui.MastermindFrame;
 import de.htwg.mastermind.view.tui.TUI;
@@ -14,11 +19,16 @@ public abstract class Main {
 	
 	public static void main(String[] args) {
 		
+		
+		// Set up Google Guice Dependency Injector
+				Injector injector = Guice.createInjector(new MastermindModel());
+				
+		
 		/*model*/
-		Field gamefield = new Field(FOUR,SIX); 
+		IField gamefield = injector.getInstance(Field.class);// new Field(FOUR,SIX); 
 		
 		/*controller*/
-		MastermindController controller = new MastermindController(gamefield);
+		IMastermindController controller = injector.getInstance(IMastermindController.class);//new MastermindController(gamefield);
 		
 		MastermindFrame gui = new MastermindFrame(controller);
 		

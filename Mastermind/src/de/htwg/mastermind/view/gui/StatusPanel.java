@@ -42,7 +42,7 @@ public class StatusPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 	
-				controller.setBlackOrWith();
+				controller.setBlackOrWhite();
 				
 			}
 		});

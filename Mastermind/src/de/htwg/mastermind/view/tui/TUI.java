@@ -3,6 +3,8 @@ package de.htwg.mastermind.view.tui;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.google.inject.Inject;
+
 
 import de.htwg.mastermind.controller.IMastermindController;
 import de.htwg.mastermind.util.observer.Observer;
@@ -12,7 +14,7 @@ public class TUI  implements Observer{
 	
 	private IMastermindController controller;
 	private static final int FOUR = 4;
-	
+	@Inject
 	public TUI(IMastermindController controller) {
 		this.controller = controller;
 		controller.addObserver(this);
@@ -31,7 +33,7 @@ public class TUI  implements Observer{
 		}
 		
 		if(next.equalsIgnoreCase("ok")) {
-			controller.setBlackOrWith();
+			controller.setBlackOrWhite();
 		}
 		if(next.equalsIgnoreCase("n")) {
 			controller.createField();

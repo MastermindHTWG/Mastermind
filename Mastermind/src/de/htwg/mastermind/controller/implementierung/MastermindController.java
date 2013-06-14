@@ -3,6 +3,9 @@ package de.htwg.mastermind.controller.implementierung;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map.Entry;
+
+import com.google.inject.Inject;
+
 import de.htwg.mastermind.controller.IMastermindController;
 import de.htwg.mastermind.model.IField;
 import de.htwg.mastermind.model.implementierung.Field;
@@ -29,6 +32,7 @@ public class MastermindController extends Observable implements IMastermindContr
 	private Color [][] colorInfo;
 	private Color [] colorSolution;
 	
+	@Inject
 	public MastermindController(IField gamefield) {  
 		this.gamefield = gamefield;
 		this.click = new int [gamefield.getSize()];
@@ -121,8 +125,6 @@ public class MastermindController extends Observable implements IMastermindContr
 		}
 	}
 	
-	//TODO
-	//Komponenten 
 	public void setPlayerColor(char color, int pos, int click) {
 		Square sq = new Square();
 		this.click[pos] =click;
@@ -223,7 +225,7 @@ public class MastermindController extends Observable implements IMastermindContr
 	 * auswerten der Farbkombinationen die vom Spieler gesetzt wurden
 	 * und ueberpruefen ob der spieler gewonnen hat
 	 */
-	public void setBlackOrWith() {
+	public void setBlackOrWhite() {
 		Square [] playerSetColor = gamefield.getGameRectangleColor();
 		Square [] solutionColor = gamefield.getSolution();
 		int size = gamefield.getSize(),count = 0;
@@ -234,9 +236,7 @@ public class MastermindController extends Observable implements IMastermindContr
 		if(solutionColor == null || playerSetColor == null ) {
 			statusLine= "FAIL";
 			return;
-		}
-		
-		
+		}		
 		for (int x = 0; x < size;x++) {
 			whihteAvaliable = false;
 			for(int y = 0; y < size;y++) {
@@ -272,8 +272,7 @@ public class MastermindController extends Observable implements IMastermindContr
 				gamefield.setInformation(sq, count);
 				count++;
 			}
-		}	
-		
+		}			
 		if(!this.checkWin() &&gamefield.getAktiv()+1 == gamefield.getHeight()) {			
 				gamefield.setVisibleSolution(true);
 				statusLine= "You lose!!!!!!!";
@@ -283,8 +282,7 @@ public class MastermindController extends Observable implements IMastermindContr
 		notifyObservers();
 		gamefield.setAktiv(gamefield.getAktiv()+1);	
 		notifyObservers();
-	}
-	
+	}	
 	
 	private boolean checkWin() {
 		Square[] unit = gamefield.getInformation(); 

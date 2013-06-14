@@ -6,6 +6,8 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.google.inject.Inject;
+
 import de.htwg.mastermind.controller.IMastermindController;
 import de.htwg.mastermind.util.observer.Observer;
 
@@ -26,7 +28,7 @@ public class MastermindFrame extends JFrame implements Observer{
 	private InformationField statusField;
 	private JPanel panel;
 	private SolutionPanel solutionPanel;
-	
+	@Inject
 	public MastermindFrame(IMastermindController controller) {
 		this.controller = controller;
 		this.panel = new JPanel( new GridLayout(ONE,THREE));

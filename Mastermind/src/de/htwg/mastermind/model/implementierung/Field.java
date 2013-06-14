@@ -1,5 +1,8 @@
 package de.htwg.mastermind.model.implementierung;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import de.htwg.mastermind.model.IField;
 
 
@@ -22,7 +25,8 @@ public class Field implements IField{
 		this.rec[1] =new Solution(1);	
 	}
 	
-	public Field(int size,int height) {
+	@Inject 
+	public Field(@Named("size") int size,@Named("height") int height) {
 		this.height = height;
 		this.size = size;
 		this.game = new GameRectangle[height];

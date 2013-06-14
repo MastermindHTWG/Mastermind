@@ -12,7 +12,7 @@ public class PlayerField extends JPanel{
 	private static final long serialVersionUID = 1L;
 
 	
-	public PlayerField(IMastermindController controller){
+	public PlayerField(IMastermindController controller){ 
 		
 		IMastermindController con = controller;
 		int height = con.getHeight();

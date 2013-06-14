@@ -14,7 +14,7 @@ public interface IMastermindController extends IObservable{
 	
 	void setPlayerColor(char color, int pos, int click);
 	
-	void setBlackOrWith();
+	void setBlackOrWhite();
 	
 	void setVisibleSolution(boolean visible);
 		
@@ -33,7 +33,9 @@ public interface IMastermindController extends IObservable{
 	Color [][] getInfoColor();
 	
 	Color [] getSolutionColor();
+	
 	int getSize();
+	
 	int getHeight();
 	
 }
