@@ -38,7 +38,7 @@ public class TUI  implements Observer{
 		if(next.equalsIgnoreCase("n")) {
 			controller.createField();
 		}
-		if (next.matches("[RBOWGY][RBOWGY][RBOWGY][RBOWGY]")) { 
+		if (next.matches("[RBOWGP][RBOWGP][RBOWGP][RBOWGP]")) { 
 			char [] c = pat(next);
 			controller.charToSquareAndSetForTUI(c);			
 		}
@@ -51,7 +51,7 @@ public class TUI  implements Observer{
 	 * @param String next : color entry from player
 	 */
 	private char [] pat(String next) {
-		Pattern pat = Pattern.compile("[RBOWGY]");
+		Pattern pat = Pattern.compile("[RBOWGP]");
 		Matcher m = pat.matcher(next);
 		char [] color = new char [FOUR];
 		for (int i = 0; i< FOUR; i++ ) {

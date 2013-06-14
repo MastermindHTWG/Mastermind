@@ -20,7 +20,7 @@ public class ColorSelection extends Rectangle{
 		unit[TWO].setColor('O');
 		unit[THREE].setColor('W');
 		unit[FOUR].setColor('G');
-		unit[FIVE].setColor('Y');
+		unit[FIVE].setColor('P');
 	}
 
 }

@@ -48,11 +48,11 @@ public class MastermindControllerTest {
 		controller2.createSolution();
 		Square[] sol = controller2.getSolution();
 		controller2.setPlayerColor(sol[0].getColor(),0,0);
-		controller2.setBlackOrWith();
+		controller2.setBlackOrWhite();
 		controller2.setVisibleSolution(true);
 		assertEquals("+----+"+ newLine + "|(" + sol[0].getColor() +") |"+newLine+"+----+"+newLine+
 				"+----++----+"+newLine+ "|(B) ||("+sol[0].getColor()+") |"+newLine+"+----++----+-1"+
-				newLine+ "+------------------------+"+newLine+ "|(R) (B) (O) (W) (G) (Y) |"+
+				newLine+ "+------------------------+"+newLine+ "|(R) (B) (O) (W) (G) (P) |"+
 				newLine+"+------------------------+",controller2.getGamfieldString());
 	}
 

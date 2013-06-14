@@ -72,7 +72,7 @@ public class SquarePanel extends JPanel {
 			
 					}  else if(click == FIVE) {
 				
-						controller.setPlayerColor('Y',pos,NULL);
+						controller.setPlayerColor('P',pos,NULL);
 					}		
 				}
 				

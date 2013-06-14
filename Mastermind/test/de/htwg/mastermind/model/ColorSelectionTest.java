@@ -25,7 +25,7 @@ public class ColorSelectionTest {
 		assertEquals( 'O',tmp[2].getColor());
 		assertEquals( 'W',tmp[3].getColor());
 		assertEquals( 'G',tmp[4].getColor());
-		assertEquals( 'Y',tmp[5].getColor());
+		assertEquals( 'P',tmp[5].getColor());
 	}
 
 

@@ -94,7 +94,7 @@ public class MastermindController extends Observable implements IMastermindContr
 			} else if ( rnd == FOUR) {
 				color[i].setColor('G');
 			} else if( rnd == FIVE) {
-				color[i].setColor('Y');
+				color[i].setColor('P');
 			} else {
 				color[i].setColor('_');
 			}
