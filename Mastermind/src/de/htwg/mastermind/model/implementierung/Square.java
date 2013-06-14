@@ -1,8 +1,6 @@
 package de.htwg.mastermind.model.implementierung;
 
 
-
-
 public class Square {
 
 	private char color;

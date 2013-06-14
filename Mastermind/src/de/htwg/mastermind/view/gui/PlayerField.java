@@ -25,8 +25,10 @@ public class PlayerField extends JPanel{
 		
 		player = new PlayerSetColorPanel[height];
 		for(int i=height-1; i>=0;i--) {
-			if(player[i] != null)
+			if(player[i] != null) {
 				remove(player[i]);
+			}
+			
 			player[i] = new PlayerSetColorPanel(con,color[i]);
 			add(player[i]);
 		}

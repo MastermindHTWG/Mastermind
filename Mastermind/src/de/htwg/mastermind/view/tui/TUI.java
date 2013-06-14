@@ -11,7 +11,7 @@ import de.htwg.mastermind.util.observer.Observer;
 public class TUI  implements Observer{
 	
 	private IMastermindController controller;
-	private final static int FOUR = 4;
+	private static final int FOUR = 4;
 	
 	public TUI(IMastermindController controller) {
 		this.controller = controller;

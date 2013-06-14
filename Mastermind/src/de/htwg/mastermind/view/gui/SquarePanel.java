@@ -54,23 +54,23 @@ public class SquarePanel extends JPanel {
 		
 						controller.setPlayerColor('R',pos,ONE);
 			
-					} else if(click == 1) {
+					} else if(click == ONE) {
 			
 						controller.setPlayerColor('B',pos,TWO);
 						
-					}  else if(click == 2) {
+					}  else if(click == TWO) {
 			
 						controller.setPlayerColor('O',pos,THREE);
 				
-					}  else if(click == 3) {
+					}  else if(click == THREE) {
 		
 						controller.setPlayerColor('W',pos,FOUR);
 					
-					}  else if(click == 4) {
+					}  else if(click == FOUR) {
 				
 						controller.setPlayerColor('G',pos,FIVE);
 			
-					}  else if(click == 5) {
+					}  else if(click == FIVE) {
 				
 						controller.setPlayerColor('Y',pos,NULL);
 					}		

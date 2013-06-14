@@ -83,7 +83,6 @@ public class Field implements IField{
 	 *@ param color: set the player Color
 	 */
 	public boolean setGameRectangleColor(Square color,int pos) {
-		int aktiv = this.getAktiv();
 			if(aktiv != -1) {
 				game[aktiv].playerSetColor(color, pos);
 				return true;
