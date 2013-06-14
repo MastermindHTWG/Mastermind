@@ -33,5 +33,7 @@ public interface IMastermindController extends IObservable{
 	Color [][] getInfoColor();
 	
 	Color [] getSolutionColor();
+	int getSize();
+	int getHeight();
 	
 }

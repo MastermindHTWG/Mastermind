@@ -175,7 +175,7 @@ public class Field implements IField{
 	public boolean getVisibleSolution(){
 		return  ((Solution)rec[1]).getVisible();
 	}
-
 	
+
 }
 

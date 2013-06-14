@@ -12,23 +12,22 @@ import de.htwg.mastermind.controller.IMastermindController;
 
 public class InformationField extends JPanel{
 
-	private static final long serialVersionUID = 1L;
-	private IMastermindController controller;
-	private int size;
-	private int height;
-	private InformationPanel [] info;
+	private static final long serialVersionUID = 1L;	
 	
-	
-	public InformationField(IMastermindController controller,int size, int height, Color [][]colInfo){
-		this.height = height;
-		this.size = size;
-		this.controller = controller;
+	public InformationField(IMastermindController controller){
+		IMastermindController con = controller;
+		
+		int height = con.getHeight();
+		Color [][] colInfo = con.getInfoColor();
+		
 		setLayout(new GridLayout(height,1));
-		info = new InformationPanel[this.height];
+		InformationPanel [] info = new InformationPanel[height];
 		for(int i=height-1; i>=0;i--) {
-			if(info[i] != null)
+			if(info[i] != null){
 				remove(info[i]);
-			info[i] = new InformationPanel(this.controller, this.size,colInfo[i]);
+			}
+				
+			info[i] = new InformationPanel(con,colInfo[i]);
 			add(info[i]);
 		}
 		

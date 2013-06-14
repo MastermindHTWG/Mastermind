@@ -8,19 +8,17 @@ import de.htwg.mastermind.controller.IMastermindController;
 
 public class PlayerSetColorPanel extends JPanel {
 
-	private int size;
-	private IMastermindController controller;
 	
-	private SquarePanel [] sq;
-	
-	
-	public PlayerSetColorPanel(IMastermindController controller ,int size, Color [] col, int [] click) {
-		this.size = size;
-		this.controller = controller;
-		sq = new SquarePanel[this.size];
+	private static final long serialVersionUID = 1L;
+
+	public PlayerSetColorPanel(IMastermindController controller , Color [] col) {
+		IMastermindController con = controller;
+		int size = con.getSize();
+		int [] click = con.getClick();
+		SquarePanel [] sq = new SquarePanel[size];
 		
 		
-		setLayout(new GridLayout(1,this.size));
+		setLayout(new GridLayout(1,size));
 		
 		
 		int i = 0;
@@ -28,7 +26,7 @@ public class PlayerSetColorPanel extends JPanel {
 			if(t != null) {
 				remove(t);
 			}
-			t = new SquarePanel(this.controller, i,true, col[i], click[i]);
+			t = new SquarePanel(con, i,true, col[i], click[i]);
 			add(t);
 			i++;
 		}	

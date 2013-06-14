@@ -8,25 +8,26 @@ import javax.swing.JPanel;
 import de.htwg.mastermind.controller.IMastermindController;
 
 public class SolutionPanel extends JPanel{
-	private SquarePanel [] info;
-	private int size;
-	private IMastermindController controller;
-	private  Color[] col;
 	
-	SolutionPanel(IMastermindController controller, int size){
-		this.size = size;
-		this.controller = controller;
-		this.info = new SquarePanel[this.size];
-		this.col = controller.getSolutionColor();
+	
+	private static final long serialVersionUID = 1L;
+
+	SolutionPanel(IMastermindController controller){
 		
-		 this.setLayout(new GridLayout(1,this.size));
+		IMastermindController con = controller;
+		int size = con.getSize();
+		Color[] col = con.getSolutionColor();
+		SquarePanel [] info = new SquarePanel[size];
+
+		
+		 this.setLayout(new GridLayout(1,size));
 		 
 			int i = 0;
 			for(SquarePanel t : info) { 
 				if(t != null) {
 					remove(t);
 				}
-				t = new SquarePanel(this.controller, i,false, col[i],0);
+				t = new SquarePanel(con, i,false, col[i],0);
 				add(t);
 				i++;
 			}

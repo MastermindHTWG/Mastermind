@@ -8,17 +8,15 @@ import de.htwg.mastermind.controller.IMastermindController;
 public class InformationPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-	private int size;
-	private IMastermindController controller;
-	private SquarePanel [] sq;
+
 	
-	public InformationPanel(IMastermindController controller ,int size,Color [] colInfo) {
-		this.size = size;
-		this.controller = controller;
-		sq = new SquarePanel[this.size];
+	public InformationPanel(IMastermindController controller, Color [] col) {
+		IMastermindController con = controller;
+		int size = con.getSize();
+		SquarePanel [] sq = new SquarePanel[size];
+		Color [] colInfo =col;
 		
-		
-		setLayout(new GridLayout(1,this.size));
+		setLayout(new GridLayout(1,size));
 		
 		
 		int i = 0;
@@ -26,7 +24,7 @@ public class InformationPanel extends JPanel {
 			if(t != null) {
 				remove(t);
 			}
-			t = new SquarePanel(this.controller, i,false, colInfo[i],0);
+			t = new SquarePanel(con, i,false, colInfo[i],0);
 			add(t);
 			i++;
 		}

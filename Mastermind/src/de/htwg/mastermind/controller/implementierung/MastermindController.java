@@ -13,6 +13,9 @@ import de.htwg.mastermind.util.observer.Observable;
 
 public class MastermindController extends Observable implements IMastermindController{
 
+	private static final int R = 188;
+	private static final int G = 210;
+	private static final int B = 238;
 	private IField gamefield;	
 	private String statusLine;
 	private static final int ONE = 1;
@@ -138,26 +141,17 @@ public class MastermindController extends Observable implements IMastermindContr
 	
 	public Color [][] getInfoColor(){
 		Square [] getInfo = gamefield.getInformation();
-		if(getInfo == null)
+		if(getInfo == null) {
 			return colorInfo;
-		
-	
-		
-		
-		for(Square c: getInfo) {
-			System.out.println(c.getColor());
-		}
-		
+		}		
 		int i = 0;
 		for(Square s: getInfo) {
 			if(s.getColor() == 'B') {
-				System.out.println("BLACK");
 				colorInfo[gamefield.getAktiv()][i] = Color.BLACK;
 			} else if(s.getColor() == 'W') {
-				System.out.println("WHITE");
 				colorInfo[gamefield.getAktiv()][i] = Color.WHITE;
 			} else if(s.getColor() == '_') {
-				colorInfo[gamefield.getAktiv()][i] = new Color(188,210,238);
+				colorInfo[gamefield.getAktiv()][i] = new Color(R,G,B);
 			} 
 			i++;
 		}
@@ -169,8 +163,9 @@ public class MastermindController extends Observable implements IMastermindContr
 	public Color [][] getPlayerColor(){
 		Square [] getCol =	gamefield.getGameRectangleColor();
 		 
-		if(getCol== null)
+		if(getCol== null) {
 			return colorPlayer;
+		}		
 		
 		int i = 0;
 		for(Square s: getCol) {
@@ -279,14 +274,11 @@ public class MastermindController extends Observable implements IMastermindContr
 			}
 		}	
 		
-		if(!this.checkWin()) {
-			if(gamefield.getAktiv()+1 == gamefield.getHeight()) {				
+		if(!this.checkWin() &&gamefield.getAktiv()+1 == gamefield.getHeight()) {			
 				gamefield.setVisibleSolution(true);
 				statusLine= "You lose!!!!!!!";
-			}
 		}
 			
-		/*if fuer ende der Spielrunde*/
 		
 		notifyObservers();
 		gamefield.setAktiv(gamefield.getAktiv()+1);	
@@ -309,4 +301,11 @@ public class MastermindController extends Observable implements IMastermindContr
 	public String getStatus() {
 		return statusLine;
 	}
+	public int getHeight() {
+		return gamefield.getHeight();
+	}
+	public int getSize(){
+		return gamefield.getSize();
+	}
+	
 }

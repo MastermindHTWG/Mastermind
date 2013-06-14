@@ -11,13 +11,16 @@ import de.htwg.mastermind.util.observer.Observer;
 
 public class MastermindFrame extends JFrame implements Observer{
 
+
+	private static final int ONE = 1;
+	private static final int THREE = 3;
+	
 	private static final int DEFAULT_Y = 630;
 	private static final int DEFAULT_X = 528;
 	private static final long serialVersionUID = 1L;
 	
 	private IMastermindController controller;
 	private StatusPanel statusPanel;
-//	private StatusPanel statusPanelOne;
 	
 	private PlayerField playerField;
 	private InformationField statusField;
@@ -26,8 +29,8 @@ public class MastermindFrame extends JFrame implements Observer{
 	
 	public MastermindFrame(IMastermindController controller) {
 		this.controller = controller;
-		this.panel = new JPanel( new GridLayout(1,3));
-		this.solutionPanel = new SolutionPanel(this.controller, 4);
+		this.panel = new JPanel( new GridLayout(ONE,THREE));
+		this.solutionPanel = new SolutionPanel(this.controller);
 		
 		setTitle("HTWG Mastermind");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,7 +43,7 @@ public class MastermindFrame extends JFrame implements Observer{
 	}
 
 
-	private final void constructMastermindPane() {
+	private void constructMastermindPane() {
 		 
 		if(statusPanel != null) {
 			remove(statusPanel);
@@ -54,13 +57,13 @@ public class MastermindFrame extends JFrame implements Observer{
 		if(statusField != null) {
 			panel.remove(statusField);
 		}
-		statusField = new InformationField(controller, 4,6,controller.getInfoColor());
+		statusField = new InformationField(controller);
 		panel.add(statusField);
 		
 		if(playerField != null) {
 			panel.remove(playerField);
 		}		
-		playerField = new PlayerField(controller, 4,6, controller.getPlayerColor(),controller.getClick());
+		playerField = new PlayerField(controller);
 		panel.add(playerField);
 		
 		
@@ -68,7 +71,7 @@ public class MastermindFrame extends JFrame implements Observer{
 		if(solutionPanel != null ) {
 			remove(solutionPanel);
 		}
-		solutionPanel = new SolutionPanel(this.controller, 4);
+		solutionPanel = new SolutionPanel(this.controller);
 		add(solutionPanel,BorderLayout.NORTH);
 
 		

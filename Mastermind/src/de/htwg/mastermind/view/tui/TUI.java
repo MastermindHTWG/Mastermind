@@ -11,6 +11,7 @@ import de.htwg.mastermind.util.observer.Observer;
 public class TUI  implements Observer{
 	
 	private IMastermindController controller;
+	private final static int FOUR = 4;
 	
 	public TUI(IMastermindController controller) {
 		this.controller = controller;
@@ -50,8 +51,8 @@ public class TUI  implements Observer{
 	private char [] pat(String next) {
 		Pattern pat = Pattern.compile("[RBOWGY]");
 		Matcher m = pat.matcher(next);
-		char [] color = new char [4];
-		for (int i = 0; i< 4; i++ ) {
+		char [] color = new char [FOUR];
+		for (int i = 0; i< FOUR; i++ ) {
 				m.find();
 				char tmp[]=m.group().toCharArray();
 				color[i]=tmp[0];
