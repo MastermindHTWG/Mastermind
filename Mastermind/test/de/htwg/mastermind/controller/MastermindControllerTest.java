@@ -56,8 +56,8 @@ public class MastermindControllerTest {
 
 	@Test
 	public void createField(){
-		MastermindController conOne = new MastermindController(null);
-		MastermindController conTwo = new MastermindController(null);
+		MastermindController conOne = new MastermindController(new Field());
+		MastermindController conTwo = new MastermindController(new Field());
 		conOne.createField();
 		conTwo.createField();
 		assertEquals(conOne.getGamfieldString(), conTwo.getGamfieldString());
@@ -65,8 +65,8 @@ public class MastermindControllerTest {
 	
 	@Test
 	public void chatToSquareTest(){
-		MastermindController conOne = new MastermindController(null);
-		MastermindController conTwo = new MastermindController(null);
+		MastermindController conOne = new MastermindController(new Field());
+		MastermindController conTwo = new MastermindController(new Field());
 		conOne.createField();
 		conTwo.createField();
 		conOne.charToSquareAndSetForTUI(new char [] {'A'});
@@ -76,8 +76,8 @@ public class MastermindControllerTest {
 	
 	@Test
 	public void getStatusTest(){
-		MastermindController conOne = new MastermindController(null);
-		MastermindController conTwo = new MastermindController(null);
+		MastermindController conOne = new MastermindController(new Field());
+		MastermindController conTwo = new MastermindController(new Field());
 		assertEquals(conOne.getStatus(), conTwo.getStatus());
 	}
 	
