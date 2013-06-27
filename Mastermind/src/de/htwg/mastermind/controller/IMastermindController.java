@@ -8,9 +8,9 @@ import de.htwg.mastermind.util.observer.IObservable;
 public interface IMastermindController extends IObservable{
 
 	
-	Square[] createSolution();
+	Square[] createSolution(boolean tmp);
 	
-	void setSolution();
+	void setSolution(boolean tmp);
 	
 	void setPlayerColor(char color, int pos, int click);
 	

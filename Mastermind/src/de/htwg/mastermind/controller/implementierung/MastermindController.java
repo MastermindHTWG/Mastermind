@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 import de.htwg.mastermind.controller.IMastermindController;
 import de.htwg.mastermind.model.IField;
@@ -13,7 +14,7 @@ import de.htwg.mastermind.model.implementierung.Square;
 
 
 import de.htwg.mastermind.util.observer.Observable;
-
+@Singleton
 public class MastermindController extends Observable implements IMastermindController{
 
 	private static final int R = 188;
@@ -48,7 +49,7 @@ public class MastermindController extends Observable implements IMastermindContr
 	public void createField() {
 		this.gamefield = new Field(FOUR,SIX);
 		statusLine = "New Field was created";
-		this.setSolution();
+		this.setSolution(false);
 		this.click = new int [gamefield.getSize()];
 		this.colorPlayer = new Color[gamefield.getHeight()][gamefield.getSize()];
 		this.colorInfo = new Color[gamefield.getHeight()][gamefield.getSize()];
@@ -61,10 +62,10 @@ public class MastermindController extends Observable implements IMastermindContr
 	/*
 	 * bestimme farbkombination der loesung
 	 */
-	public void setSolution() {
+	public void setSolution(boolean tmp) {
 				
 		int pos = 0;
-		Square color [] = this.createSolution();		
+		Square color [] = this.createSolution(tmp);		
 		
 		for(Square c: color ) {
 			gamefield.setSolution(c, pos);
@@ -76,13 +77,18 @@ public class MastermindController extends Observable implements IMastermindContr
 		return gamefield.getSolution();
 	}
 	
-	public Square [] createSolution() {
+	public Square [] createSolution(boolean tmp) {
 		
 		Square color[] = new Square[gamefield.getSize()];
-	
+		int rnd = 0;
 		for (int i = 0; i< gamefield.getSize();i++) {
 			color[i] = new Square();
-			int rnd = (int) (Math.random() * (SIX));
+			if(tmp){
+				rnd = 1;
+			} else {
+				rnd = (int) (Math.random() * (SIX));
+			}
+				
 			if (rnd == 0) {
 				color [i].setColor('R');
 			} else if(rnd == ONE) {

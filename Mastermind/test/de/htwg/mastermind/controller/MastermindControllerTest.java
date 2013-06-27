@@ -16,9 +16,11 @@ public class MastermindControllerTest {
 	MastermindController controller1;
 	MastermindController controller2;
 	MastermindController controller3;
+	MastermindController controller4;
 	Field field1;
 	Field field2;
 	Field field3;
+	Field field4;
 	@Before
 	public void setUp() throws Exception {
 		field1 = new Field(1,1);
@@ -27,6 +29,8 @@ public class MastermindControllerTest {
 		controller2 = new MastermindController(field2);
 		field3 = new Field(1,2);
 		controller3 = new MastermindController(field3);
+		field4 = new Field(1,2);
+		controller4 = new MastermindController(field4);
 	}
 
 	@Test
@@ -52,7 +56,7 @@ public class MastermindControllerTest {
 	@Test
 	public void solutionTest() {
 		String newLine = System.getProperty("line.separator");
-		controller2.createSolution();
+		controller2.createSolution(false);
 		Square[] sol = controller2.getSolution();
 		controller2.setPlayerColor(sol[0].getColor(),0,0);
 		controller2.setBlackOrWhite();
@@ -156,7 +160,7 @@ public class MastermindControllerTest {
 	@Test
 	public void getSolutionTest(){
 		MastermindController conOne = new MastermindController(new Field());
-		conOne.setSolution();
+		conOne.setSolution(false);
 		Square [] sq = conOne.getSolution();
 		Color[] c = conOne.getSolutionColor();
 	}
@@ -170,6 +174,8 @@ public class MastermindControllerTest {
 		MastermindController conOne = new MastermindController(new Field());
 		assertEquals(conOne.getSize(), 1);
 	}
+	
+
 	
 	
 }
