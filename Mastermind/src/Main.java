@@ -26,13 +26,14 @@ public abstract class Main {
 				
 		
 		/*model*/
-		IField gamefield = injector.getInstance(Field.class);// new Field(FOUR,SIX); 
+		@SuppressWarnings("unused")
+		IField gamefield = injector.getInstance(Field.class);
 		
 		/*controller*/
-		IMastermindController controller = injector.getInstance(IMastermindController.class);//new MastermindController(gamefield);
-		
+		IMastermindController controller = injector.getInstance(IMastermindController.class);
+		@SuppressWarnings("unused")
 		MastermindFrame gui = new MastermindFrame(controller);
-		
+
 		/*view*/
 		TUI tui = new TUI(controller);
 		
