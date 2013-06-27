@@ -34,7 +34,7 @@ public class MastermindController extends Observable implements IMastermindContr
 	private Color [] colorSolution;
 	
 	@Inject
-	public MastermindController(IField gamefield) {  
+	public MastermindController(IField gamefield) {
 		this.gamefield = gamefield;
 		this.click = new int [gamefield.getSize()];
 		this.colorPlayer = new Color[gamefield.getHeight()][gamefield.getSize()];
@@ -60,7 +60,8 @@ public class MastermindController extends Observable implements IMastermindContr
 	
 	
 	/*
-	 * bestimme farbkombination der loesung
+	 * set the created solution
+	 * param tmp the same as createSolution(..)
 	 */
 	public void setSolution(boolean tmp) {
 				
@@ -72,11 +73,18 @@ public class MastermindController extends Observable implements IMastermindContr
 			pos++;		
 		}
 	}
-	
+	/*
+	 * @return the solution 
+	 */
 	public Square [] getSolution() {
 		return gamefield.getSolution();
 	}
 	
+	/*
+	 * return a solution created by the ki
+	 * @param tmp false = create an ki solution true create an fixed solution
+	 * @return square []
+	 */
 	public Square [] createSolution(boolean tmp) {
 		
 		Square color[] = new Square[gamefield.getSize()];
@@ -106,7 +114,10 @@ public class MastermindController extends Observable implements IMastermindContr
 		return color;
 	}
 	
-	
+	/*
+	 * show the solution
+	 * @param visible 
+	 */
 	public void setVisibleSolution(boolean visible) {
 		gamefield.setVisibleSolution(visible);
 		gamefield.setAktiv(gamefield.getHeight());
@@ -115,12 +126,15 @@ public class MastermindController extends Observable implements IMastermindContr
 	}
 	
 	/*
-	 * gibt das Spielfeld als String zurueck
+	 * @return gamerectangle as string
 	 */
 	public String getGamfieldString(){
 		return gamefield.toString();
 	}
 
+	/*
+	 * cast an char to square 
+	 */
 	public void charToSquareAndSetForTUI(char [] color) {
 		int x = 0;
 		for(char c: color) {
@@ -128,7 +142,12 @@ public class MastermindController extends Observable implements IMastermindContr
 			x++;
 		}
 	}
-	
+	/*
+	 * player set color
+	 * @param color
+	 * @param pos
+	 * @param click for color 
+	 */
 	public void setPlayerColor(char color, int pos, int click) {
 		Square sq = new Square();
 		
@@ -142,10 +161,17 @@ public class MastermindController extends Observable implements IMastermindContr
 			
 		notifyObservers();
 	}
+	
+	/*
+	 * @return the click of an square
+	 */
 	public int [] getClick() {
 		return this.click;
 	}
 	
+	/*
+	 * @return color[]
+	 */
 	public Color [][] getInfoColor(){
 		Square [] getInfo = gamefield.getInformation();
 		if(getInfo == null) {
@@ -166,7 +192,9 @@ public class MastermindController extends Observable implements IMastermindContr
 		
 	}
 	
-	
+	/*
+	 * @return color[][]
+	 */
 	public Color [][] getPlayerColor(){
 		Square [] getCol =	gamefield.getGameRectangleColor();
 		 
@@ -196,6 +224,10 @@ public class MastermindController extends Observable implements IMastermindContr
 		
 		return colorPlayer;
 	}
+	
+	/*
+	 * @return color[][]
+	 */
 	public Color [] getSolutionColor(){
 		Square [] getCol =	gamefield.getSolution();
 		
@@ -227,8 +259,7 @@ public class MastermindController extends Observable implements IMastermindContr
 	
 	
 	/*
-	 * auswerten der Farbkombinationen die vom Spieler gesetzt wurden
-	 * und ueberpruefen ob der spieler gewonnen hat
+	 * set the information ki algo
 	 */
 	public void setBlackOrWhite() {
 		Square [] playerSetColor = gamefield.getGameRectangleColor();
@@ -301,12 +332,21 @@ public class MastermindController extends Observable implements IMastermindContr
 		statusLine = "You win.";
 		return true;
 	}	
+	/*
+	 * @return status string
+	 */
 	public String getStatus() {
 		return statusLine;
 	}
+	/*
+	 * return height
+	 */
 	public int getHeight() {
 		return gamefield.getHeight();
 	}
+	/*
+	 * @return size
+	 */
 	public int getSize(){
 		return gamefield.getSize();
 	}

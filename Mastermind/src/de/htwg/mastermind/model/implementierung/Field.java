@@ -40,12 +40,14 @@ public class Field implements IField{
 	}
 	
 	/*
-	 * @return numbers of squares in a Gamefield
+	 * @return the size from the field
 	 */
 	public int getSize() {
 		return this.size;
 	}
-	
+	/*
+	 * @return the height from the field
+	 */
 	public int getHeight() {
 		return this.height;
 	}
@@ -68,8 +70,9 @@ public class Field implements IField{
 	}
 	
 	/*
-	 *@param color color of one solution
-	 *qparam pos at postion pos
+	 * set the color at position pos
+	 * @param color
+	 * @param pos
 	 */
 	public void setSolution(Square color, int pos) {
 		if(pos < size) {
@@ -77,14 +80,17 @@ public class Field implements IField{
 		}			
 	}
 	/*
-	 *@return char [] of solution
+	 * @return the solution in an array
 	 */
 	public Square[] getSolution() {
 		return rec[1].getSquareColor();
 	}
 	
 	/*
-	 *@ param color: set the player Color
+	 * set the player color  to position pos
+	 * @param color
+	 * @param pos
+	 * @return boolean
 	 */
 	public boolean setGameRectangleColor(Square color,int pos) {
 			if(aktiv != -1) {
@@ -97,7 +103,7 @@ public class Field implements IField{
 		
 	}
 	/*
-	 *@ return char[] of color form Player
+	 * @return the color in the actual gameRectangle
 	 */
 	public Square[] getGameRectangleColor() {
 		int pos = this.getAktiv(); 
@@ -111,10 +117,9 @@ public class Field implements IField{
 
 	
 	/*
-	 * setze eine Spieleinheit aktiv
-	 * @return 
-	 * false = weiterspielen
-	 * true = spiel fertig
+	 * set the next game rectangle activ
+	 * @param pos
+	 * @return boolean
 	 */
 	public boolean setAktiv(int pos) {
 		if(pos < this.height) {
@@ -128,14 +133,16 @@ public class Field implements IField{
 	}
 	
 	/*
-	 * @return position of the active GameRectangle 
+	 * @return the pos of the actual activ gamerectangle
 	 */
 	public int getAktiv() {
 		return this.aktiv;
 	}
 	
 	/*
-	 *@ return Information as char []
+	 * set the information by KI
+	 * @param color
+	 * @param pos
 	 */
 	public Square [] getInformation() {
 		int arrayPos = this.getAktiv();
@@ -145,7 +152,9 @@ public class Field implements IField{
 		return null;
 		
 	}
-	
+	/*
+	 * @return the prev info
+	 */
 	public Square [] getPrevInformation() {
 		int arrayPos = this.getAktiv();
 		if(arrayPos != -1) {
@@ -157,10 +166,9 @@ public class Field implements IField{
 	}
 	
 	/*
-	 * set the Informations white or black if the color in 
-	 * PlayerSetColor is right (position)
+	 * set the information by KI
 	 * @param color
-	 * @param pos position of the array in Information
+	 * @param pos
 	 */
 	public void setInformation(Square color, int pos) {
 		int arrayPos = this.getAktiv();
@@ -168,13 +176,15 @@ public class Field implements IField{
 	}
 	
 	/*
-	 *@param visible true visible show solution
-	 *				 false show *
+	 * set the solution visible
+	 * @param visible
 	 */
 	public void setVisibleSolution(boolean visible) {
 		((Solution) rec[1]).setVisible(visible);
 	}
-	
+	/*
+	 * @return true for visbile false for unvisible
+	 */
 	public boolean getVisibleSolution(){
 		return  ((Solution)rec[1]).getVisible();
 	}
