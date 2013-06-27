@@ -9,10 +9,17 @@ public class Solution extends Rectangle{
 		
 	}
 	
+	/*
+	 * set the visible of solution
+	 * @param visible 
+	 */
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
 	
+	/*
+	 * @return the state of visibke
+	 */
 	public boolean getVisible() {
 		return this.visible;
 	}
