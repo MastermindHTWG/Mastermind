@@ -1,7 +1,10 @@
 package de.htwg.mastermind.view.tui;
 
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.apache.log4j.Logger;
 
 import com.google.inject.Inject;
 
@@ -14,6 +17,9 @@ public class TUI  implements Observer{
 	
 	private IMastermindController controller;
 	private static final int FOUR = 4;
+	private Logger logger = Logger.getLogger("de.htwg.mastermind.view.tui");
+	
+	
 	@Inject
 	public TUI(IMastermindController controller) {
 		this.controller = controller;
@@ -72,9 +78,9 @@ public class TUI  implements Observer{
 	}
 	
 	private void printTUI() {
-		System.out.println(controller.getGamfieldString() + "\n" +
+		logger.info(controller.getGamfieldString() + "\n" +
 								controller.getStatus()+"\n" +
-									"Pleas enter command (q-quit,s-solve,n-new, BB for Black Black in Gamefield, ok-to confirm input)");
+									"Please enter command (q-quit,s-solve,n-new, BB for Black Black in Gamefield, ok-to confirm input)");
 
 		
 	}
