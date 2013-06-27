@@ -174,6 +174,15 @@ public class MastermindControllerTest {
 		MastermindController conOne = new MastermindController(new Field());
 		assertEquals(conOne.getSize(), 1);
 	}
+	@Test
+	public void setBlack(){
+		MastermindController conOne = new MastermindController(new Field());
+		conOne.setSolution(true);
+		conOne.setPlayerColor('B', 0, 0);
+		conOne.setBlackOrWhite();
+		conOne.setBlackOrWhite();
+		assertNotNull(conOne.getInfoColor());
+	}
 	
 
 	
