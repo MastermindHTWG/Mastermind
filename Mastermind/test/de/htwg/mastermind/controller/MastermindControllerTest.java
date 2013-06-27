@@ -175,7 +175,7 @@ public class MastermindControllerTest {
 		assertEquals(conOne.getSize(), 1);
 	}
 	@Test
-	public void setBlack(){
+	public void setBlackTestOne(){
 		MastermindController conOne = new MastermindController(new Field());
 		conOne.setSolution(true);
 		conOne.setPlayerColor('B', 0, 0);
@@ -183,7 +183,26 @@ public class MastermindControllerTest {
 		conOne.setBlackOrWhite();
 		assertNotNull(conOne.getInfoColor());
 	}
-	
+	@Test
+	public void setBlackTestTwo(){
+		MastermindController conOne = new MastermindController(new Field(2,2));
+		conOne.setSolution(true);
+		conOne.setPlayerColor('W', 0, 0);
+		conOne.setPlayerColor('B', 1, 0);
+		conOne.setBlackOrWhite();
+		conOne.setBlackOrWhite();
+		assertNotNull(conOne.getInfoColor());
+	}
+	@Test
+	public void setBlackTestThree(){
+		MastermindController conOne = new MastermindController(new Field(2,2));
+		conOne.setSolution(true);
+		conOne.setPlayerColor('B', 0, 0);
+		conOne.setPlayerColor('W', 1, 0);
+		conOne.setBlackOrWhite();
+		conOne.setBlackOrWhite();
+		assertNotNull(conOne.getInfoColor());
+	}
 
 	
 	
