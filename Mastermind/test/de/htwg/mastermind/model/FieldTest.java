@@ -18,8 +18,8 @@ public class FieldTest {
 	Square sq;
 	@Before
 	public void setUp() {
-		one = new Field();
-		two = new Field();
+		one = new Field(1,2);
+		two = new Field(1,2);
 		three = new Field(1,5);
 		four  = new Field(1,5);
 		six = new Field(1,5);
@@ -58,6 +58,7 @@ public class FieldTest {
 	public void setGetSolution() {
 		
 		one.setSolution(sq, 0);
+		one.setSolution(sq, 9);
 		Square [] ret = one.getSolution();
 		assertEquals(sq.getColor(),ret[0].getColor());
 	}
@@ -74,6 +75,30 @@ public class FieldTest {
 	public void visibleTest(){
 		one.setVisibleSolution(true);
 		assertTrue(one.getVisibleSolution());
+	}
+	@Test
+	public void setAktivTest() {
+		sq.setColor('B');
+		one.setAktiv(9);
+		assertFalse(one.setGameRectangleColor(sq, 1));
+	}
+	@Test
+	public void getGameRectangleColorTest() {
+		one.setAktiv(9);
+		assertNull(one.getGameRectangleColor());
+	}
+	@Test
+	public void getInformationTest(){
+		one.setAktiv(9);
+		assertNull(one.getInformation());
+	}
+	@Test
+	public void getPrevInformation() {
+		Square[] tmp = two.getInformation();
+		two.setAktiv(1);
+		assertArrayEquals(tmp, two.getPrevInformation());
+		two.setAktiv(10);
+		assertArrayEquals(null, two.getPrevInformation());
 	}
 	
 }

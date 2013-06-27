@@ -15,24 +15,31 @@ public class MastermindControllerTest {
 
 	MastermindController controller1;
 	MastermindController controller2;
+	MastermindController controller3;
 	Field field1;
 	Field field2;
-	
+	Field field3;
 	@Before
 	public void setUp() throws Exception {
 		field1 = new Field(1,1);
 		controller1 = new MastermindController(field1);
 		field2 = new Field(1,1);
 		controller2 = new MastermindController(field2);
-		
+		field3 = new Field(1,2);
+		controller3 = new MastermindController(field3);
 	}
 
 	@Test
-	public void test() {
+	public void getColortest() {
 		Square sq = new Square();
 		sq.setColor('B');
 		controller1.setPlayerColor('B',0,0);
 		Square [] ret =field1.getGameRectangleColor();
+		field3.setAktiv(4);
+		
+		controller3.setPlayerColor('B', 5, 0);
+		assertTrue("Game is over!".equals(controller3.getStatus()));
+		
 		
 		assertEquals(ret[0].getColor(), sq.getColor() );
 	}
