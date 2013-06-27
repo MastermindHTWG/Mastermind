@@ -61,6 +61,7 @@ public class MastermindControllerTest {
 		controller2.setPlayerColor(sol[0].getColor(),0,0);
 		controller2.setBlackOrWhite();
 		controller2.setVisibleSolution(true);
+		controller2.getSolutionColor();
 		assertEquals("+----+"+ newLine + "|(" + sol[0].getColor() +") |"+newLine+"+----+"+newLine+
 				"+----++----+"+newLine+ "|(B) ||("+sol[0].getColor()+") |"+newLine+"+----++----+-1"+
 				newLine+ "+------------------------+"+newLine+ "|(R) (B) (O) (W) (G) (P) |"+
@@ -167,6 +168,7 @@ public class MastermindControllerTest {
 	@Test
 	public void getHeightTest() {
 		MastermindController conOne = new MastermindController(new Field());
+		conOne.getSolutionColor();
 		assertEquals(conOne.getHeight(), 1);
 	}
 	@Test
@@ -202,6 +204,14 @@ public class MastermindControllerTest {
 		conOne.setBlackOrWhite();
 		conOne.setBlackOrWhite();
 		assertNotNull(conOne.getInfoColor());
+		conOne.getSolutionColor();
+	}
+	@Test
+	public void getSolTest(){
+		MastermindController conOne = new MastermindController(new Field(2,2));
+		conOne.createSolution(true);
+		conOne.setVisibleSolution(true);
+		conOne.getSolutionColor();
 	}
 
 	
