@@ -95,8 +95,6 @@ public class MastermindController extends Observable implements IMastermindContr
 				color[i].setColor('G');
 			} else if( rnd == FIVE) {
 				color[i].setColor('P');
-			} else {
-				color[i].setColor('_');
 			}
 		}		
 		return color;
@@ -127,9 +125,10 @@ public class MastermindController extends Observable implements IMastermindContr
 	
 	public void setPlayerColor(char color, int pos, int click) {
 		Square sq = new Square();
-		this.click[pos] =click;
+		
 		sq.setColor(color);
 		if(gamefield.setGameRectangleColor(sq,pos)) {
+			this.click[pos] =click;
 			statusLine = "Color: "+ color+" was set!";
 		} else {
 			statusLine = "Game is over!";
