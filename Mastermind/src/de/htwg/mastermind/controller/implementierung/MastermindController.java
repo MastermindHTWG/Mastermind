@@ -88,16 +88,19 @@ public class MastermindController extends Observable implements IMastermindContr
 	public Square [] createSolution(boolean tmp) {
 		
 		Square color[] = new Square[gamefield.getSize()];
-		int rnd = 0;
+		int rnd = 0,b = 0;
 		for (int i = 0; i< gamefield.getSize();i++) {
 			color[i] = new Square();
 			
 			rnd = (int) (Math.random() * (SIX));
-			
+			/*remove*/
 			if(tmp){
 				rnd = 1;
+				b++;
 			}
-			
+			if (b == 1) {
+				rnd = 2;
+			}
 			if (rnd == 0) {
 				color [i].setColor('R');
 			} else if(rnd == ONE) {
