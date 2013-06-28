@@ -83,6 +83,7 @@ public class MastermindControllerTest {
 		MastermindController conTwo = new MastermindController(new Field());
 		conOne.createField();
 		conTwo.createField();
+		conOne.setSolution(false);
 		conOne.charToSquareAndSetForTUI(new char [] {'A'});
 		conTwo.charToSquareAndSetForTUI(new char [] {'A'});
 		assertEquals(conOne.getGamfieldString(), conTwo.getGamfieldString());
@@ -193,6 +194,7 @@ public class MastermindControllerTest {
 		conOne.setPlayerColor('B', 1, 0);
 		conOne.setBlackOrWhite();
 		conOne.setBlackOrWhite();
+		conOne.getInfoColor();
 		assertNotNull(conOne.getInfoColor());
 	}
 	@Test
@@ -202,14 +204,31 @@ public class MastermindControllerTest {
 		conOne.setPlayerColor('B', 0, 0);
 		conOne.setPlayerColor('W', 1, 0);
 		conOne.setBlackOrWhite();
+		conOne.getInfoColor();
 		conOne.setBlackOrWhite();
+		conOne.getInfoColor();
 		assertNotNull(conOne.getInfoColor());
+		conOne.setVisibleSolution(true);
 		conOne.getSolutionColor();
 	}
 	@Test
-	public void getSolTest(){
-		MastermindController conOne = new MastermindController(new Field(2,2));
-		conOne.createSolution(true);
+	public void getSolTestOne(){
+		MastermindController conOne = new MastermindController(new Field(4,2));
+		conOne.setSolution(false);
+		conOne.setVisibleSolution(true);
+		conOne.getSolutionColor();
+	}
+	@Test
+	public void getSolTestTwo(){
+		MastermindController conOne = new MastermindController(new Field(4,2));
+		conOne.setSolution(false);
+		conOne.setVisibleSolution(true);
+		conOne.getSolutionColor();
+	}
+	@Test
+	public void getSolTestThree(){
+		MastermindController conOne = new MastermindController(new Field(4,2));
+		conOne.setSolution(false);
 		conOne.setVisibleSolution(true);
 		conOne.getSolutionColor();
 	}

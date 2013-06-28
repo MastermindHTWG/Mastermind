@@ -91,12 +91,13 @@ public class MastermindController extends Observable implements IMastermindContr
 		int rnd = 0;
 		for (int i = 0; i< gamefield.getSize();i++) {
 			color[i] = new Square();
+			
+			rnd = (int) (Math.random() * (SIX));
+			
 			if(tmp){
 				rnd = 1;
-			} else {
-				rnd = (int) (Math.random() * (SIX));
 			}
-				
+			
 			if (rnd == 0) {
 				color [i].setColor('R');
 			} else if(rnd == ONE) {
@@ -236,8 +237,7 @@ public class MastermindController extends Observable implements IMastermindContr
 		for(Square s: getCol) {
 			if(!gamefield.getVisibleSolution()){
 				colorSolution[i] = Color.GRAY;
-			}
-			else if(s.getColor() == 'R') {
+			} else if(s.getColor() == 'R') {
 				colorSolution[i] = Color.RED;
 			} else if(s.getColor() == 'B') {
 				colorSolution[i] = Color.BLUE;
